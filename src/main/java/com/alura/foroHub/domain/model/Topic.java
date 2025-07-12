@@ -1,6 +1,7 @@
 package com.alura.foroHub.domain.model;
 
 
+import com.alura.foroHub.application.dto.TopicDto;
 import com.alura.foroHub.application.mapper.TopicMapper;
 import jakarta.persistence.*;
 import lombok.*;
@@ -37,7 +38,5 @@ public class Topic {
     @ManyToOne
     @JoinColumn(name = "app_user_id")
     private UserEntity userEntity;
-
-
 
 }

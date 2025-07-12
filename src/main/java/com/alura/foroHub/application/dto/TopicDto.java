@@ -1,5 +1,8 @@
 package com.alura.foroHub.application.dto;
 
+import com.alura.foroHub.domain.model.Course;
+import com.alura.foroHub.domain.model.UserEntity;
+
 import java.time.LocalDateTime;
 
 public record TopicDto(
@@ -7,7 +10,7 @@ public record TopicDto(
         String message,
         LocalDateTime creationDate,
         Boolean status,
-        String author,
-        String curso
+        UserEntity author,
+        Course curso
 ) {
 }

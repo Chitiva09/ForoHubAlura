@@ -12,8 +12,21 @@ public class TopicMapper {
         topic.setMessage(topicDto.message());
         topic.setCreationDate(topicDto.creationDate());
         topic.setStatus(topicDto.status());
-        topic.setAuthor(topicDto.author());
+        topic.setAuthor(String.valueOf(topicDto.author()));
 
+    return topic;
+    }
+
+    public TopicDto toDto (Topic topic){
+        TopicDto topicDto = new TopicDto(
+                topic.getTitle(),
+                topic.getMessage(),
+                topic.getCreationDate(),
+                topic.isStatus(),
+                topic.getAuthor(),
+                topic.getCourse().getNameCourse()
+
+        );
 
     }
 }

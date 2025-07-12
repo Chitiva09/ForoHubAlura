@@ -2,10 +2,12 @@ package com.alura.foroHub.controller;
 
 
 import com.alura.foroHub.application.dto.TopicDto;
-import com.alura.foroHub.application.mapper.TopicMapper;
-import com.alura.foroHub.domain.model.Topic;
+
 import com.alura.foroHub.domain.repository.TopicRepository;
+import com.alura.foroHub.domain.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,12 +19,15 @@ public class TopicController {
     @Autowired
     TopicRepository topicRepository;
 
+    @Autowired
+    TopicService topicService;
+
     @PostMapping
-    public void registrationNewTopic (@RequestBody TopicDto topicDto){
+    public ResponseEntity<TopicDto> registrationNewTopic (@RequestBody TopicDto topicDto){
 
-        Topic topic = topicRepository.save(new Topic(topicDto))
+        TopicDto topic = topicService.registrationNewTopic(topicDto);
 
-
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
