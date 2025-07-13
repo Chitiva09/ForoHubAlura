@@ -1,8 +1,6 @@
 package com.alura.foroHub.domain.model;
 
 
-import com.alura.foroHub.application.dto.TopicDto;
-import com.alura.foroHub.application.mapper.TopicMapper;
 import jakarta.persistence.*;
 import lombok.*;
 

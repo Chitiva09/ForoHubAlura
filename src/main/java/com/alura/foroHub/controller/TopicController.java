@@ -1,10 +1,11 @@
 package com.alura.foroHub.controller;
 
 
-import com.alura.foroHub.application.dto.TopicDto;
+import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
 
+import com.alura.foroHub.application.UseCase.TopicUseCase;
 import com.alura.foroHub.domain.repository.TopicRepository;
-import com.alura.foroHub.domain.service.TopicService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,17 +18,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/topics")
 public class TopicController {
     @Autowired
-    TopicRepository topicRepository;
+    TopicRepository topicRepositoryJpa;
 
     @Autowired
-    TopicService topicService;
+    TopicUseCase topicUseCase;
 
     @PostMapping
-    public ResponseEntity<TopicDto> registrationNewTopic (@RequestBody TopicDto topicDto){
+    public ResponseEntity registrationNewTopic (@RequestBody @Valid NewTopicDtoEntrance newTopicDtoEntrance){
 
-        TopicDto topic = topicService.registrationNewTopic(topicDto);
+        topicUseCase.registrationNewTopic(newTopicDtoEntrance);
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
 
