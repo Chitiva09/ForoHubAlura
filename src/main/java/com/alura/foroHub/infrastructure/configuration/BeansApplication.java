@@ -26,6 +26,10 @@ public class BeansApplication {
 
         return new CourseRepositoryJpaImpl(jpa);
     }
+    @Bean
+    public TopicMapper topicMapper(){
+        return new TopicMapper();
+    }
 
     @Bean
     public TopicUseCase topicUseCase (TopicMapper topicMapper, TopicRepository topicrepository, CourseRepository courseRepository ){
