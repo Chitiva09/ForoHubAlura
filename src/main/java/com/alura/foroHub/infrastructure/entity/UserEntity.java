@@ -1,4 +1,4 @@
-package com.alura.foroHub.domain.model;
+package com.alura.foroHub.infrastructure.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -27,8 +27,9 @@ public class UserEntity {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "profile_id")
     )
-    private List<Profile> profiles;
+    private List<ProfileEntity> profileEntities;
 
     @OneToMany(mappedBy = "userEntity")
-    private List<Topic> topics;
+    private List<TopicEntity> topicEntities;
+
 }

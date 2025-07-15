@@ -1,25 +1,23 @@
 package com.alura.foroHub.domain.model;
 
 
-import jakarta.persistence.*;
-import lombok.*;
+import com.alura.foroHub.infrastructure.entity.TopicEntity;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
-@Entity(name = "Course")
-@Table(name = "course")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of = "id")
+@AllArgsConstructor
 public class Course {
-    @Id
+
     private Long id;
     private String nameCourse;
     private String category;
-
-    @OneToMany(mappedBy = "course")
-    private List<Topic> topics;
+    private List<TopicEntity> topicEntities;
 
 }

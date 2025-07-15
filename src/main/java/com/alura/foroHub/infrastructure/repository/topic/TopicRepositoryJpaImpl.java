@@ -1,6 +1,6 @@
 package com.alura.foroHub.infrastructure.repository.topic;
 
-import com.alura.foroHub.domain.model.Topic;
+import com.alura.foroHub.infrastructure.entity.TopicEntity;
 import com.alura.foroHub.domain.repository.TopicRepository;
 
 public class TopicRepositoryJpaImpl implements TopicRepository {
@@ -12,7 +12,7 @@ public class TopicRepositoryJpaImpl implements TopicRepository {
     }
 
     @Override
-    public void save(Topic topic) {
-        Topic topic = mapper.
+    public void save(TopicEntity topicEntity) {
+        TopicEntity topicEntity = mapper.
     }
 }

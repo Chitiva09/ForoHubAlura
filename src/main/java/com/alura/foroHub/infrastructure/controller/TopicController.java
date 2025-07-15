@@ -1,4 +1,4 @@
-package com.alura.foroHub.controller;
+package com.alura.foroHub.infrastructure.controller;
 
 
 import com.alura.foroHub.application.dto.NewTopicDtoEntrance;

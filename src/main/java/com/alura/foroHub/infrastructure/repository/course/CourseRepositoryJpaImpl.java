@@ -1,6 +1,6 @@
 package com.alura.foroHub.infrastructure.repository.course;
 
-import com.alura.foroHub.domain.model.Course;
+import com.alura.foroHub.infrastructure.entity.CourseEntity;
 import com.alura.foroHub.domain.repository.CourseRepository;
 
 import java.util.Optional;
@@ -16,7 +16,7 @@ public class CourseRepositoryJpaImpl implements CourseRepository {
     }
 
     @Override
-    public Optional<Course> findByNameCourse(String nameCourse) {
+    public Optional<CourseEntity> findByNameCourse(String nameCourse) {
         return jpa.findByNameCourse(nameCourse);
     }
 

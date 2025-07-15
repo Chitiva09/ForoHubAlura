@@ -1,40 +1,31 @@
 package com.alura.foroHub.domain.model;
 
-
-import jakarta.persistence.*;
-import lombok.*;
+import com.alura.foroHub.infrastructure.entity.AnswersEntity;
+import com.alura.foroHub.infrastructure.entity.CourseEntity;
+import com.alura.foroHub.infrastructure.entity.UserEntity;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-
-@Entity(name = "Topic")
-@Table(name = "topic")
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(of = "id")
+@AllArgsConstructor
 public class Topic {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String Title;
     private String message;
     private LocalDateTime creationDate;
     private boolean status = true;
     private String author ;
-
-    @ManyToOne
-    @JoinColumn(name = "course_id")
-    private Course course;
-
-    @OneToMany(mappedBy = "topic")
-    private List<Answers> answers;
-
-    @ManyToOne
-    @JoinColumn(name = "app_user_id")
+    private CourseEntity courseEntity;
+    private List<AnswersEntity> answers;
     private UserEntity userEntity;
+
 
 }

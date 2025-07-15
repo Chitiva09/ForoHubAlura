@@ -1,9 +1,9 @@
 package com.alura.foroHub.domain.repository;
 
-import com.alura.foroHub.domain.model.Course;
+import com.alura.foroHub.infrastructure.entity.CourseEntity;
 
 import java.util.Optional;
 
 public interface CourseRepository {
-    Optional<Course> findByNameCourse(String nameCourse);
+    Optional<CourseEntity> findByNameCourse(String nameCourse);
 }

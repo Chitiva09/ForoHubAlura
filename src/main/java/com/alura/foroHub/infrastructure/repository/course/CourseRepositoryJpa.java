@@ -1,11 +1,11 @@
 package com.alura.foroHub.infrastructure.repository.course;
 
-import com.alura.foroHub.domain.model.Course;
+import com.alura.foroHub.infrastructure.entity.CourseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface CourseRepositoryJpa extends JpaRepository <Course , Long>{
+public interface CourseRepositoryJpa extends JpaRepository <CourseEntity, Long>{
 
-    Optional<Course> findByNameCourse (String cursoName);
+    Optional<CourseEntity> findByNameCourse (String cursoName);
 }

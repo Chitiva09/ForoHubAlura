@@ -1,8 +1,8 @@
 package com.alura.foroHub.domain.repository;
 
-import com.alura.foroHub.domain.model.Topic;
+import com.alura.foroHub.infrastructure.entity.TopicEntity;
 
 public interface TopicRepository {
-    void save(Topic topic);
+    void save(TopicEntity topicEntity);
 
 }
