@@ -15,6 +15,6 @@ public class Answers {
     private LocalDateTime creationDate;
     private String author;
     private String solution;
-    private UserEntity userEntity;
+    private UserModel userEntity;
 
 }

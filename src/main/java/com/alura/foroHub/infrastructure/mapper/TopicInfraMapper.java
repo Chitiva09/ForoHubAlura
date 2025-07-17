@@ -17,20 +17,12 @@ public class TopicInfraMapper {
         newTopicEntity.setCreationDate(LocalDateTime.now());
         newTopicEntity.setAuthor(topic.getAuthor());
         newTopicEntity.setStatus(true);
-        newTopicEntity.setCourseEntity(courseName);
+        newTopicEntity.setCourseEntity(courseName.getNameCourse());
 
         return newTopicEntity;
 
     }
 
-    public Topic toDomain (TopicEntity topicEntity, CourseEntity courseEntity){
-
-        Topic topic = new Topic();
-        topic.
-
-        return topic;
-
-    }
 
 
 

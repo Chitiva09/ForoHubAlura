@@ -1,8 +1,6 @@
 package com.alura.foroHub.domain.model;
 
-import com.alura.foroHub.infrastructure.entity.AnswersEntity;
-import com.alura.foroHub.infrastructure.entity.CourseEntity;
-import com.alura.foroHub.infrastructure.entity.UserEntity;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,9 +21,9 @@ public class Topic {
     private LocalDateTime creationDate;
     private boolean status = true;
     private String author ;
-    private CourseEntity courseEntity;
-    private List<AnswersEntity> answers;
-    private UserEntity userEntity;
+    private Course course;
+    private List<Answers> answers;
+    private UserModel userModel;
 
 
 }

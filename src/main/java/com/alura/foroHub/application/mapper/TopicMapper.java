@@ -1,25 +1,25 @@
 package com.alura.foroHub.application.mapper;
 
 import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
-import com.alura.foroHub.infrastructure.entity.CourseEntity;
-import com.alura.foroHub.infrastructure.entity.TopicEntity;
+import com.alura.foroHub.domain.model.Course;
+import com.alura.foroHub.domain.model.Topic;
 
 import java.time.LocalDateTime;
 
 
 public class TopicMapper {
 
-    public TopicEntity toEntity(NewTopicDtoEntrance newTopicDtoEntrance, CourseEntity courseEntityName){
+    public Topic toModel(NewTopicDtoEntrance newTopicDtoEntrance, Course courseName){
 
-        TopicEntity topicEntity = new TopicEntity();
-        topicEntity.setTitle(newTopicDtoEntrance.title());
-        topicEntity.setMessage(newTopicDtoEntrance.message());
-        topicEntity.setCreationDate(LocalDateTime.now());
-        topicEntity.setAuthor(newTopicDtoEntrance.author());
-        topicEntity.setStatus(true);
-        topicEntity.setCourseEntity(courseEntityName);
+        Topic topic = new Topic();
+        topic.setTitle(newTopicDtoEntrance.title());
+        topic.setMessage(newTopicDtoEntrance.message());
+        topic.setCreationDate(LocalDateTime.now());
+        topic.setAuthor(newTopicDtoEntrance.author());
+        topic.setStatus(true);
+        topic.setCourse(courseName);
 
-    return topicEntity;
+    return topic;
     }
 
 }

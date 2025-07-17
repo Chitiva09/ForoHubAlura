@@ -1,14 +1,16 @@
 package com.alura.foroHub.application.UseCase;
 
 
+import org.springframework.stereotype.Service;
+
 import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
 import com.alura.foroHub.application.mapper.TopicMapper;
-import com.alura.foroHub.infrastructure.entity.CourseEntity;
-import com.alura.foroHub.infrastructure.entity.TopicEntity;
+import com.alura.foroHub.domain.model.Course;
+import com.alura.foroHub.domain.model.Topic;
 import com.alura.foroHub.domain.repository.CourseRepository;
 import com.alura.foroHub.domain.repository.TopicRepository;
+
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
@@ -18,14 +20,15 @@ public class TopicUseCaseImpl implements TopicUseCase{
     private final TopicRepository topicRepository;
     private final CourseRepository courseRepository;
 
+    @Override
     public NewTopicDtoEntrance registrationNewTopic(NewTopicDtoEntrance newTopicDtoEntrance) {
 
-        CourseEntity courseEntityName = courseRepository.findByNameCourse(newTopicDtoEntrance.cursoName())
+        Course courseRegistrationName = courseRepository.findByNameCourse(newTopicDtoEntrance.cursoName())
                 .orElseThrow(() -> new RuntimeException("Curso no encontrado"));
 
-        TopicEntity newTopicEntity = topicMapper.toEntity(newTopicDtoEntrance, courseEntityName);
+        Topic newTopic = topicMapper.toModel(newTopicDtoEntrance, courseRegistrationName);
 
-        topicRepository.save(newTopicEntity);
+        topicRepository.save(newTopic);
         return newTopicDtoEntrance;
     }
 

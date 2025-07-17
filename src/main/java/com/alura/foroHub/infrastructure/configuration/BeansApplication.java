@@ -34,6 +34,6 @@ public class BeansApplication {
     @Bean
     public TopicUseCase topicUseCase (TopicMapper topicMapper, TopicRepository topicrepository, CourseRepository courseRepository ){
 
-        return new TopicUseCaseImpl(topicMapper,topicrepository,courseRepository );
+        return new TopicUseCase(topicMapper,topicrepository,courseRepository );
     }
 }
