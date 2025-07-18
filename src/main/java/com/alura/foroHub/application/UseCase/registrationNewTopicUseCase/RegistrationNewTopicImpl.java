@@ -1,4 +1,4 @@
-package com.alura.foroHub.application.UseCase;
+package com.alura.foroHub.application.UseCase.registrationNewTopicUseCase;
 
 
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class TopicUseCaseImpl implements TopicUseCase{
+public class RegistrationNewTopicImpl implements RegistrationNewTopic{
 
     private final TopicMapper topicMapper;
     private final TopicRepository topicRepository;

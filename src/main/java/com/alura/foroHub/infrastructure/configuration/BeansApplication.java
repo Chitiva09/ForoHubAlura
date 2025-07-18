@@ -1,7 +1,7 @@
 package com.alura.foroHub.infrastructure.configuration;
 
-import com.alura.foroHub.application.UseCase.TopicUseCase;
-import com.alura.foroHub.application.UseCase.TopicUseCaseImpl;
+import com.alura.foroHub.application.UseCase.registrationNewTopicUseCase.RegistrationNewTopic;
+import com.alura.foroHub.application.UseCase.registrationNewTopicUseCase.RegistrationNewTopicImpl;
 import com.alura.foroHub.application.mapper.TopicMapper;
 import com.alura.foroHub.domain.repository.CourseRepository;
 import com.alura.foroHub.domain.repository.TopicRepository;
@@ -32,8 +32,8 @@ public class BeansApplication {
     }
 
     @Bean
-    public TopicUseCase topicUseCase (TopicMapper topicMapper, TopicRepository topicrepository, CourseRepository courseRepository ){
+    public RegistrationNewTopic topicUseCase (TopicMapper topicMapper, TopicRepository topicrepository, CourseRepository courseRepository ){
 
-        return new TopicUseCase(topicMapper,topicrepository,courseRepository );
+        return new RegistrationNewTopic(topicMapper,topicrepository,courseRepository );
     }
 }

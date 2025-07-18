@@ -18,7 +18,7 @@ public class TopicMapper {
         topic.setAuthor(newTopicDtoEntrance.author());
         topic.setStatus(true);
         topic.setCourse(courseName);
-
+//estoy tratando de enviar solo el nombre del curso, pero no se como hacerlo
     return topic;
     }
 

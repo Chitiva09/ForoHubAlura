@@ -24,6 +24,4 @@ public class Topic {
     private Course course;
     private List<Answers> answers;
     private UserModel userModel;
-
-
 }

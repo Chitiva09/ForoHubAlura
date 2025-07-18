@@ -1,9 +1,8 @@
 package com.alura.foroHub.infrastructure.controller;
 
 
+import com.alura.foroHub.application.UseCase.registrationNewTopicUseCase.RegistrationNewTopic;
 import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
-
-import com.alura.foroHub.application.UseCase.TopicUseCase;
 import com.alura.foroHub.domain.repository.TopicRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,7 @@ public class TopicController {
     TopicRepository topicRepositoryJpa;
 
     @Autowired
-    TopicUseCase topicUseCase;
+    RegistrationNewTopic topicUseCase;
 
     @PostMapping
     public ResponseEntity registrationNewTopic (@RequestBody @Valid NewTopicDtoEntrance newTopicDtoEntrance){
