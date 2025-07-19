@@ -1,15 +1,15 @@
 package com.alura.foroHub.application.mapper;
 
+import java.time.LocalDateTime;
+
 import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
 import com.alura.foroHub.domain.model.Course;
 import com.alura.foroHub.domain.model.Topic;
 
-import java.time.LocalDateTime;
-
 
 public class TopicMapper {
 
-    public Topic toModel(NewTopicDtoEntrance newTopicDtoEntrance, Course courseName){
+    public Topic toModel(NewTopicDtoEntrance newTopicDtoEntrance, Course course){
 
         Topic topic = new Topic();
         topic.setTitle(newTopicDtoEntrance.title());
@@ -17,8 +17,7 @@ public class TopicMapper {
         topic.setCreationDate(LocalDateTime.now());
         topic.setAuthor(newTopicDtoEntrance.author());
         topic.setStatus(true);
-        topic.setCourse(courseName);
-//estoy tratando de enviar solo el nombre del curso, pero no se como hacerlo
+        topic.setCourse(course);
     return topic;
     }
 

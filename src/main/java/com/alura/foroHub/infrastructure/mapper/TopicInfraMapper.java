@@ -8,8 +8,8 @@ import com.alura.foroHub.infrastructure.entity.TopicEntity;
 import java.time.LocalDateTime;
 
 public class TopicInfraMapper {
-
-    public TopicEntity toEntity (Topic topic, Course courseName){
+// De modelo de dominio a entidad de infraestructura JPA
+    public TopicEntity toEntity (Topic topic, CourseEntity courseEntity){
         TopicEntity newTopicEntity = new TopicEntity();
 
         newTopicEntity.setTitle(topic.getTitle());
@@ -17,13 +17,16 @@ public class TopicInfraMapper {
         newTopicEntity.setCreationDate(LocalDateTime.now());
         newTopicEntity.setAuthor(topic.getAuthor());
         newTopicEntity.setStatus(true);
-        newTopicEntity.setCourseEntity(courseName.getNameCourse());
+        newTopicEntity.setCourseEntity(courseEntity);
 
         return newTopicEntity;
 
     }
 
+//De entidad de infraestructura JPA a modelo de dominio
+public Topic toModel(TopicEntity topicEntity){
 
+    
 
 
 }
