@@ -3,9 +3,8 @@ package com.alura.foroHub.infrastructure.controller;
 
 import com.alura.foroHub.application.UseCase.registrationNewTopicUseCase.RegistrationNewTopic;
 import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
-import com.alura.foroHub.domain.repository.TopicRepository;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,15 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/topics")
+@AllArgsConstructor
 public class TopicController {
-    @Autowired
-    TopicRepository topicRepositoryJpa;
 
-    @Autowired
-    RegistrationNewTopic topicUseCase;
+
+    private final RegistrationNewTopic topicUseCase;
 
     @PostMapping
-    public ResponseEntity registrationNewTopic (@RequestBody @Valid NewTopicDtoEntrance newTopicDtoEntrance){
+    public ResponseEntity<Void> registrationNewTopic (@RequestBody @Valid NewTopicDtoEntrance newTopicDtoEntrance){
 
         topicUseCase.registrationNewTopic(newTopicDtoEntrance);
 

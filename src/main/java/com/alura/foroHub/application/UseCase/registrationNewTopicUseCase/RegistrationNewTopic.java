@@ -4,6 +4,6 @@ import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
 
 public interface RegistrationNewTopic {
 
-    NewTopicDtoEntrance registrationNewTopic (NewTopicDtoEntrance newTopicDtoEntrance);
+    void registrationNewTopic (NewTopicDtoEntrance newTopicDtoEntrance);
 
 }

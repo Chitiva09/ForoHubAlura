@@ -21,15 +21,15 @@ public class RegistrationNewTopicImpl implements RegistrationNewTopic{
     private final CourseRepository courseRepository;
 
     @Override
-    public NewTopicDtoEntrance registrationNewTopic(NewTopicDtoEntrance newTopicDtoEntrance) {
+    public void registrationNewTopic(NewTopicDtoEntrance newTopicDtoEntrance) {
 
         Course courseRegistrationName = courseRepository.findByNameCourse(newTopicDtoEntrance.cursoName())
                 .orElseThrow(() -> new RuntimeException("Curso no encontrado"));
 
         Topic newTopic = topicMapper.toModel(newTopicDtoEntrance, courseRegistrationName);
 
-        topicRepository.save(newTopic);
-        return newTopicDtoEntrance;
+        topicRepository.save(newTopic, courseRegistrationName);
+
     }
 
 
