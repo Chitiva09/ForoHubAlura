@@ -1,5 +1,8 @@
 package com.alura.foroHub.application.UseCase.findCourseByNameUseCase;
 
-public interface FindCourseByName {
+import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
+import com.alura.foroHub.domain.model.Course;
 
+public interface FindCourseByName {
+String findCourseByName (String nameCourse);
 }

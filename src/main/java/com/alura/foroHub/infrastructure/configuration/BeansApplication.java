@@ -1,5 +1,7 @@
 package com.alura.foroHub.infrastructure.configuration;
 
+import com.alura.foroHub.application.UseCase.findCourseByNameUseCase.FindCourseByName;
+import com.alura.foroHub.application.UseCase.findCourseByNameUseCase.FindCourseByNameImpl;
 import com.alura.foroHub.application.UseCase.registrationNewTopicUseCase.RegistrationNewTopic;
 import com.alura.foroHub.application.UseCase.registrationNewTopicUseCase.RegistrationNewTopicImpl;
 import com.alura.foroHub.application.mapper.TopicMapper;
@@ -35,8 +37,17 @@ public class BeansApplication {
     }
 
     @Bean
-    public RegistrationNewTopic topicUseCase (TopicMapper topicMapper, TopicRepository topicrepository, CourseRepository courseRepository ){
+    public RegistrationNewTopic topicUseCase (TopicMapper topicMapper,
+                                              TopicRepository topicrepository,
+                                              CourseRepository courseRepository,
+                                              FindCourseByName findCourseByName){
 
-        return new RegistrationNewTopicImpl(topicMapper,topicrepository,courseRepository );
+        return new RegistrationNewTopicImpl(topicMapper,topicrepository,courseRepository, findCourseByName );
+    }
+
+    @Bean
+    public FindCourseByName findCourseByName (CourseRepository courseRepository){
+
+        return new FindCourseByNameImpl(courseRepository);
     }
 }

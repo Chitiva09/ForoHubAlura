@@ -1,6 +1,7 @@
 package com.alura.foroHub.application.UseCase.registrationNewTopicUseCase;
 
 
+import com.alura.foroHub.application.UseCase.findCourseByNameUseCase.FindCourseByName;
 import org.springframework.stereotype.Service;
 
 import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
@@ -19,16 +20,16 @@ public class RegistrationNewTopicImpl implements RegistrationNewTopic{
     private final TopicMapper topicMapper;
     private final TopicRepository topicRepository;
     private final CourseRepository courseRepository;
-
+    private final FindCourseByName findCourseByName;
     @Override
     public void registrationNewTopic(NewTopicDtoEntrance newTopicDtoEntrance) {
 
-        Course courseRegistrationName = courseRepository.findByNameCourse(newTopicDtoEntrance.cursoName())
-                .orElseThrow(() -> new RuntimeException("Curso no encontrado"));
 
-        Topic newTopic = topicMapper.toModel(newTopicDtoEntrance, courseRegistrationName);
+        String courseRegistrationId = findCourseByName.findCourseByName(newTopicDtoEntrance.cursoName());
 
-        topicRepository.save(newTopic, courseRegistrationName);
+        Topic newTopic = topicMapper.toModel(newTopicDtoEntrance, courseRegistrationId);
+
+        topicRepository.save(newTopic, courseRegistrationId);
 
     }
 
