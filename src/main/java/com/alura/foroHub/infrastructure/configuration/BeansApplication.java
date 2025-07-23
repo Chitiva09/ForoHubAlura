@@ -30,6 +30,7 @@ public class BeansApplication {
 
         return new CourseRepositoryJpaImpl(jpa, courseInfraMapper);
     }
+    
     @Bean
     public TopicMapper topicMapper(){
 

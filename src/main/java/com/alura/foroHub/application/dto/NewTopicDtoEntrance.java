@@ -10,6 +10,8 @@ public record NewTopicDtoEntrance(
         @NotBlank
         String author,
         @NotBlank
-        String cursoName
+        String cursoName,
+        @NotBlank
+        Long courseId
 ) {
 }

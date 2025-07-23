@@ -17,12 +17,13 @@ public class AnswersEntity {
     @Id
     private Long id;
     private String message;
-    @ManyToOne
-    @JoinColumn(name = "topic_id")
-    private TopicEntity topicEntity;
     private LocalDateTime creationDate;
     private String author;
     private String solution;
+    
+    @ManyToOne
+    @JoinColumn(name = "topic_id")
+    private TopicEntity topicEntity;
     @ManyToOne
     @JoinColumn(name = "app_user_id")
     private UserEntity userEntity;

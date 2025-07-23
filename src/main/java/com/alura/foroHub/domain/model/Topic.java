@@ -12,7 +12,7 @@ import java.util.List;
 public class Topic {
 
     private Long id;
-    private String Title;
+    private String title;
     private String message;
     private LocalDateTime creationDate;
     private boolean status = true;
@@ -25,7 +25,7 @@ public class Topic {
 
     public Topic(Long id, String title, String message, LocalDateTime creationDate, boolean status, String author, Course course, List<Answers> answers, UserModel userModel) {
         this.id = id;
-        Title = title;
+        this.title = title;
         this.message = message;
         this.creationDate = creationDate;
         this.status = status;
@@ -44,11 +44,11 @@ public class Topic {
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public String getMessage() {
