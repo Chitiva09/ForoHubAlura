@@ -1,4 +1,4 @@
-package com.alura.foroHub.application.UseCase.registrationNewTopicUseCase;
+package com.alura.foroHub.domain.useCases;
 
 import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
 

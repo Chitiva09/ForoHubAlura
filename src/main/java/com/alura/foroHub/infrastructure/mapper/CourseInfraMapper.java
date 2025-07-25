@@ -5,7 +5,7 @@ import com.alura.foroHub.domain.model.Course;
 import com.alura.foroHub.infrastructure.entity.CourseEntity;
 import org.springframework.stereotype.Component;
 
-@Component
+
 public class CourseInfraMapper {
     public Course toDomain (CourseEntity courseEntity){
         if (courseEntity == null ){

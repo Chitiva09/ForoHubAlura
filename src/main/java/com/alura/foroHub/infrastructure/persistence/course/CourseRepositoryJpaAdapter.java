@@ -1,21 +1,19 @@
-package com.alura.foroHub.infrastructure.repository.course;
+package com.alura.foroHub.infrastructure.persistence.course;
 
 import com.alura.foroHub.domain.model.Course;
 import com.alura.foroHub.domain.repository.CourseRepository;
-import com.alura.foroHub.infrastructure.entity.CourseEntity;
 import com.alura.foroHub.infrastructure.mapper.CourseInfraMapper;
-import org.springframework.stereotype.Repository;
 
 
 import java.util.Optional;
 
 
-public class CourseRepositoryJpaImpl implements CourseRepository {
+public class CourseRepositoryJpaAdapter implements CourseRepository {
 
     private final CourseRepositoryJpa jpa;
     private final CourseInfraMapper courseInfraMapper;
 
-    public CourseRepositoryJpaImpl (CourseRepositoryJpa jpa, CourseInfraMapper courseInfraMapper){
+    public CourseRepositoryJpaAdapter(CourseRepositoryJpa jpa, CourseInfraMapper courseInfraMapper){
         this.courseInfraMapper = courseInfraMapper;
         this.jpa = jpa;
     }

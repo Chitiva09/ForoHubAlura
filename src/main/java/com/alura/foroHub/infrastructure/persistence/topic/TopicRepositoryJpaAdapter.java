@@ -1,4 +1,4 @@
-package com.alura.foroHub.infrastructure.repository.topic;
+package com.alura.foroHub.infrastructure.persistence.topic;
 
 
 
@@ -10,14 +10,13 @@ import com.alura.foroHub.infrastructure.mapper.CourseInfraMapper;
 import com.alura.foroHub.infrastructure.mapper.TopicInfraMapper;
 
 
-
-public class TopicRepositoryJpaImpl implements TopicRepository {
+public class TopicRepositoryJpaAdapter implements TopicRepository {
 
     private final TopicRepositoryJpa jpa;
     private final TopicInfraMapper topicInfraMapper;
     private final CourseInfraMapper courseInfraMapper;
 
-    public TopicRepositoryJpaImpl(TopicRepositoryJpa jpa, TopicInfraMapper topicInfraMapper, CourseInfraMapper courseInfraMapper) {
+    public TopicRepositoryJpaAdapter(TopicRepositoryJpa jpa, TopicInfraMapper topicInfraMapper, CourseInfraMapper courseInfraMapper) {
         this.jpa = jpa;
         this.topicInfraMapper = topicInfraMapper;
         this.courseInfraMapper = courseInfraMapper;

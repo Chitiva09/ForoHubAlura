@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-@Component
+
 public class TopicInfraMapper {
     // De modelo de dominio a entidad de infraestructuraJPA
     public TopicEntity toEntity(Topic topic, CourseEntity courseEntity) {
