@@ -4,6 +4,7 @@ import com.alura.foroHub.domain.model.Course;
 import com.alura.foroHub.domain.repository.CourseRepository;
 import com.alura.foroHub.infrastructure.entity.CourseEntity;
 import com.alura.foroHub.infrastructure.mapper.CourseInfraMapper;
+import org.springframework.stereotype.Repository;
 
 
 import java.util.Optional;
@@ -18,6 +19,7 @@ public class CourseRepositoryJpaImpl implements CourseRepository {
         this.courseInfraMapper = courseInfraMapper;
         this.jpa = jpa;
     }
+
     @Override
     public Optional<Course> findByNameCourse(String nameCourse) {
 

@@ -15,14 +15,12 @@ public class CourseInfraMapper {
         return new Course(courseEntity.getId(), courseEntity.getNameCourse(),courseEntity.getCategory());
     }
 
-    public CourseEntity toEntity (Course courseDomain){
-        if (courseDomain == null){
+    public CourseEntity toEntity (Long idCourse){
+        if (idCourse == null){
             return null;
         }
         CourseEntity courseEntity= new CourseEntity();
-        courseEntity.setId(courseDomain.getId());
-        courseEntity.setNameCourse(courseDomain.getNameCourse());
-        courseEntity.setCategory(courseDomain.getCategory());
+        courseEntity.setId(idCourse);;
         return courseEntity;
     }
 }

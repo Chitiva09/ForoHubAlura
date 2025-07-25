@@ -4,6 +4,6 @@ import com.alura.foroHub.domain.model.Course;
 import com.alura.foroHub.domain.model.Topic;
 
 public interface TopicRepository {
-    void save(Topic topic, Course courseDomain);
+    void save(Topic topic, Long idCourse);
 
 }

@@ -5,7 +5,7 @@ import lombok.*;
 
 import java.util.List;
 
-@Entity(name = "User")
+@Entity(name = "App_User")
 @Table(name = "app_user")
 @Getter
 @Setter

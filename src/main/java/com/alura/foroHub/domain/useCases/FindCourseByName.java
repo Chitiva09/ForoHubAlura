@@ -4,5 +4,5 @@ import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
 import com.alura.foroHub.domain.model.Course;
 
 public interface FindCourseByName {
-String findCourseByName (String nameCourse);
+Long execute (String nameCourse);
 }

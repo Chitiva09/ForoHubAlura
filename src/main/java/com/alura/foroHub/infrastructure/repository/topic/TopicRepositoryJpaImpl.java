@@ -1,13 +1,15 @@
 package com.alura.foroHub.infrastructure.repository.topic;
 
 
-import com.alura.foroHub.domain.model.Course;
+
 import com.alura.foroHub.domain.model.Topic;
 import com.alura.foroHub.domain.repository.TopicRepository;
 import com.alura.foroHub.infrastructure.entity.CourseEntity;
 import com.alura.foroHub.infrastructure.entity.TopicEntity;
 import com.alura.foroHub.infrastructure.mapper.CourseInfraMapper;
 import com.alura.foroHub.infrastructure.mapper.TopicInfraMapper;
+
+
 
 public class TopicRepositoryJpaImpl implements TopicRepository {
 
@@ -22,10 +24,12 @@ public class TopicRepositoryJpaImpl implements TopicRepository {
     }
 
 
-    public void save(Topic topicDomain, Course courseDomain) {
-        CourseEntity courseEntity = courseInfraMapper.toEntity(courseDomain);
+    public void save(Topic topicDomain, Long idCourse) {
+        CourseEntity courseEntity = courseInfraMapper.toEntity(idCourse);
         TopicEntity topicEntity = topicInfraMapper.toEntity(topicDomain, courseEntity);
         jpa.save(topicEntity);
 
     }
+
+
 }

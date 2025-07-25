@@ -9,7 +9,7 @@ import com.alura.foroHub.domain.model.Topic;
 
 public class TopicMapper {
 
-    public Topic toModel(NewTopicDtoEntrance newTopicDtoEntrance, String courseId){
+    public Topic toModel(NewTopicDtoEntrance newTopicDtoEntrance, Long courseId){
 
         Topic topic = new Topic();
         topic.setTitle(newTopicDtoEntrance.title());
@@ -17,7 +17,10 @@ public class TopicMapper {
         topic.setCreationDate(LocalDateTime.now());
         topic.setAuthor(newTopicDtoEntrance.author());
         topic.setStatus(true);
-        topic.setCourse(courseId);
+
+        Course course = new Course();
+        course.setId(courseId);
+        topic.setCourse(course);
     return topic;
     }
 
