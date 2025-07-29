@@ -2,7 +2,7 @@ package com.alura.foroHub.infrastructure.controller;
 
 
 import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
-import com.alura.foroHub.application.dto.TopicDtoExit;
+import com.alura.foroHub.application.dto.ShowAllTopicsDtoExit;
 import com.alura.foroHub.domain.useCases.RegistrationNewTopic;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -30,7 +30,7 @@ public class TopicController {
 
 
     @GetMapping
-    public List<TopicDtoExit> showAllTopics (){
+    public ResponseEntity<List<ShowAllTopicsDtoExit>> showAllTopics (){
 
 
 

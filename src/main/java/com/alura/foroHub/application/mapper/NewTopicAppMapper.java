@@ -7,7 +7,7 @@ import com.alura.foroHub.domain.model.Course;
 import com.alura.foroHub.domain.model.Topic;
 
 
-public class TopicMapper {
+public class NewTopicAppMapper {
 
     public Topic toModel(NewTopicDtoEntrance newTopicDtoEntrance, Long courseId){
 

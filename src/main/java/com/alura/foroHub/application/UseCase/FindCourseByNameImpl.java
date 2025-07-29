@@ -1,5 +1,6 @@
-package com.alura.foroHub.application.UseCase.findCourseByNameUseCase;
+package com.alura.foroHub.application.UseCase;
 
+import com.alura.foroHub.application.exception.CourseNotFoundException;
 import com.alura.foroHub.domain.model.Course;
 import com.alura.foroHub.domain.repository.CourseRepository;
 import com.alura.foroHub.domain.useCases.FindCourseByName;
@@ -12,8 +13,7 @@ public class FindCourseByNameImpl implements FindCourseByName {
     @Override
     public Long execute(String nameCourse) {
         Course course = courseRepository.findByNameCourse(nameCourse)
-                .orElseThrow(() -> new RuntimeException("Curso no encontrado"));
-
+                .orElseThrow(() -> new CourseNotFoundException(nameCourse));
         return course.getId();
     }
 }

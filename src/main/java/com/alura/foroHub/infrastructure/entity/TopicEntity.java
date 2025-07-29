@@ -22,7 +22,7 @@ public class TopicEntity {
     private Long id;
     private String title;
     private String message;
-    private LocalDateTime creationDate;
+    private LocalDateTime creationDate = LocalDateTime.now();
     private boolean status = true;
     private String author ;
 

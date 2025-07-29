@@ -4,12 +4,9 @@ import com.alura.foroHub.domain.model.Course;
 import com.alura.foroHub.domain.model.Topic;
 import com.alura.foroHub.infrastructure.entity.CourseEntity;
 import com.alura.foroHub.infrastructure.entity.TopicEntity;
-import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
 
 
-public class TopicInfraMapper {
+public class NewTopicInfraMapper {
     // De modelo de dominio a entidad de infraestructuraJPA
     public TopicEntity toEntity(Topic topic, CourseEntity courseEntity) {
         TopicEntity newTopicEntity = new TopicEntity();
