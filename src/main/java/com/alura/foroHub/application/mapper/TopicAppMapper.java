@@ -3,11 +3,12 @@ package com.alura.foroHub.application.mapper;
 import java.time.LocalDateTime;
 
 import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
+import com.alura.foroHub.application.dto.ShowAllTopicsDtoExit;
 import com.alura.foroHub.domain.model.Course;
 import com.alura.foroHub.domain.model.Topic;
 
 
-public class NewTopicAppMapper {
+public class TopicAppMapper {
 
     public Topic toModel(NewTopicDtoEntrance newTopicDtoEntrance, Long courseId){
 
@@ -22,6 +23,17 @@ public class NewTopicAppMapper {
         course.setId(courseId);
         topic.setCourse(course);
     return topic;
+    }
+
+    public ShowAllTopicsDtoExit toDto(Topic topic){
+        return new ShowAllTopicsDtoExit(
+                topic.getTitle(),
+                topic.getMessage(),
+                topic.getAuthor(),
+                topic.getCourse() != null ? topic.getCourse().getNameCourse() : "",
+                topic.getCourse() != null ? topic.getCourse().getId() : null
+        );
+
     }
 
 }

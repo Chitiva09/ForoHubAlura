@@ -1,9 +1,8 @@
 package com.alura.foroHub.application.UseCase;
 
 import com.alura.foroHub.application.dto.ShowAllTopicsDtoExit;
-import com.alura.foroHub.application.exception.CourseNotFoundException;
 import com.alura.foroHub.application.exception.TopicNoFoundException;
-import com.alura.foroHub.application.mapper.ShowAllTopicAppMapper;
+import com.alura.foroHub.application.mapper.TopicAppMapper;
 import com.alura.foroHub.domain.model.Topic;
 import com.alura.foroHub.domain.repository.TopicRepository;
 import com.alura.foroHub.domain.useCases.ShowAllTopics;
@@ -15,10 +14,10 @@ import java.util.List;
 public class ShowAllTopicsImpl implements ShowAllTopics {
 
     private final TopicRepository topicRepository;
-    private final ShowAllTopicAppMapper showAllTopicAppMapper;
+    private final TopicAppMapper topicAppMapper;
 
     @Override
-    public List<ShowAllTopicsDtoExit> showAllTopics (){
+    public List<ShowAllTopicsDtoExit> execute (){
 
         List<Topic> topics = topicRepository.findAll();
         if (topics.isEmpty()){
@@ -28,7 +27,7 @@ public class ShowAllTopicsImpl implements ShowAllTopics {
 
 
         return topics.stream()
-                .map(topic -> showAllTopicAppMapper.toDto());
+                .map(topic -> topicAppMapper.toDto());
 
     }
 

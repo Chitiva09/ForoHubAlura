@@ -2,7 +2,7 @@ package com.alura.foroHub.application.UseCase;
 
 
 import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
-import com.alura.foroHub.application.mapper.NewTopicAppMapper;
+import com.alura.foroHub.application.mapper.TopicAppMapper;
 import com.alura.foroHub.domain.model.Topic;
 
 import com.alura.foroHub.domain.repository.TopicRepository;
@@ -13,17 +13,17 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RegistrationNewTopicImpl implements RegistrationNewTopic {
 
-    private final NewTopicAppMapper newTopicAppMapper;
+    private final TopicAppMapper topicAppMapper;
     private final TopicRepository topicRepository;
     private final FindCourseByName findCourseByName;
 
     @Override
-    public void registrationNewTopic(NewTopicDtoEntrance newTopicDtoEntrance) {
+    public void execute(NewTopicDtoEntrance newTopicDtoEntrance) {
 
 
         Long courseRegistrationId = findCourseByName.execute(newTopicDtoEntrance.cursoName());
 
-        Topic newTopic = newTopicAppMapper.toModel(newTopicDtoEntrance, courseRegistrationId);
+        Topic newTopic = topicAppMapper.toModel(newTopicDtoEntrance, courseRegistrationId);
 
         topicRepository.save(newTopic, courseRegistrationId);
 

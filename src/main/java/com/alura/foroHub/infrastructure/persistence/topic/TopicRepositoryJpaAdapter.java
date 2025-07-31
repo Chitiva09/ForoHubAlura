@@ -6,39 +6,36 @@ import com.alura.foroHub.domain.model.Topic;
 import com.alura.foroHub.domain.repository.TopicRepository;
 import com.alura.foroHub.infrastructure.entity.CourseEntity;
 import com.alura.foroHub.infrastructure.entity.TopicEntity;
-import com.alura.foroHub.infrastructure.mapper.FindByNameCourseInfraMapper;
-import com.alura.foroHub.infrastructure.mapper.NewTopicInfraMapper;
-import com.alura.foroHub.infrastructure.mapper.TopicShowAllInfraMapper;
+import com.alura.foroHub.infrastructure.mapper.CourseInfraMapper;
+import com.alura.foroHub.infrastructure.mapper.TopicInfraMapper;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 public class TopicRepositoryJpaAdapter implements TopicRepository {
 
     private final TopicRepositoryJpa jpa;
-    private final NewTopicInfraMapper newTopicInfraMapper;
-    private final FindByNameCourseInfraMapper findByNameCourseInfraMapper;
-    private final TopicShowAllInfraMapper topicShowAllInfraMapper;
+    private final TopicInfraMapper topicInfraMapper;
+    private final CourseInfraMapper courseInfraMapper;
 
-    public TopicRepositoryJpaAdapter(TopicRepositoryJpa jpa, NewTopicInfraMapper newTopicInfraMapper, FindByNameCourseInfraMapper findByNameCourseInfraMapper, TopicShowAllInfraMapper topicShowAllInfraMapper) {
+    public TopicRepositoryJpaAdapter(TopicRepositoryJpa jpa, TopicInfraMapper topicInfraMapper, CourseInfraMapper courseInfraMapper) {
         this.jpa = jpa;
-        this.newTopicInfraMapper = newTopicInfraMapper;
-        this.findByNameCourseInfraMapper = findByNameCourseInfraMapper;
-        this.topicShowAllInfraMapper = topicShowAllInfraMapper;
+        this.topicInfraMapper = topicInfraMapper;
+        this.courseInfraMapper = courseInfraMapper;
+
     }
 
 
     public void save(Topic topicDomain, Long idCourse) {
-        CourseEntity courseEntity = findByNameCourseInfraMapper.toEntity(idCourse);
-        TopicEntity topicEntity = newTopicInfraMapper.toEntity(topicDomain, courseEntity);
+        CourseEntity courseEntity = courseInfraMapper.toEntity(idCourse);
+        TopicEntity topicEntity = topicInfraMapper.toEntity(topicDomain, courseEntity);
         jpa.save(topicEntity);
 
     }
 
     public List<Topic> findAll(){
     List<TopicEntity> topics = jpa.findAll();
-        return topicShowAllInfraMapper.toDomainList(topics);
+        return TopicInfraMapper.toDomainList(topics);
     }
 
 

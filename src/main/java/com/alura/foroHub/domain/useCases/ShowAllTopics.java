@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface ShowAllTopics {
 
-    List<ShowAllTopicsDtoExit> showAllTopics ();
+    List<ShowAllTopicsDtoExit> execute ();
 
 }
