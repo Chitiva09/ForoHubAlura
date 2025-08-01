@@ -12,8 +12,8 @@ public class FindCourseByNameImpl implements FindCourseByName {
 
     @Override
     public Long execute(String nameCourse) {
-        Course course = courseRepository.findByNameCourse(nameCourse)
+        return courseRepository.findByNameCourse(nameCourse)
+                .map(Course::getId)
                 .orElseThrow(() -> new CourseNotFoundException(nameCourse));
-        return course.getId();
     }
 }

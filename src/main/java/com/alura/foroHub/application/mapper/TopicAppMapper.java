@@ -6,34 +6,35 @@ import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
 import com.alura.foroHub.application.dto.ShowAllTopicsDtoExit;
 import com.alura.foroHub.domain.model.Course;
 import com.alura.foroHub.domain.model.Topic;
+import com.alura.foroHub.domain.valueObject.topic.AuthorVO;
+import com.alura.foroHub.domain.valueObject.topic.MessageVO;
+import com.alura.foroHub.domain.valueObject.topic.TitleVO;
 
 
 public class TopicAppMapper {
 
-    public Topic toModel(NewTopicDtoEntrance newTopicDtoEntrance, Long courseId){
+    public Topic toModel(NewTopicDtoEntrance newTopicDtoEntrance, Long  courseId){
+        return Topic.builder()
+                .withTitle(new TitleVO(newTopicDtoEntrance.title()))
+                .withMessage(new MessageVO(newTopicDtoEntrance.message()))
+                .withAuthor(new AuthorVO(newTopicDtoEntrance.author()))
+                .withCourse(Course.builder().withId(courseId).build())
 
-        Topic topic = new Topic();
-        topic.setTitle(newTopicDtoEntrance.title());
-        topic.setMessage(newTopicDtoEntrance.message());
-        topic.setCreationDate(LocalDateTime.now());
-        topic.setAuthor(newTopicDtoEntrance.author());
-        topic.setStatus(true);
 
-        Course course = new Course();
-        course.setId(courseId);
-        topic.setCourse(course);
-    return topic;
+                .build();
+
+
+
     }
 
     public ShowAllTopicsDtoExit toDto(Topic topic){
         return new ShowAllTopicsDtoExit(
-                topic.getTitle(),
-                topic.getMessage(),
-                topic.getAuthor(),
-                topic.getCourse() != null ? topic.getCourse().getNameCourse() : "",
-                topic.getCourse() != null ? topic.getCourse().getId() : null
+                topic.getTitle().getTitle(),
+                topic.getMessage().getMessage(),
+                topic.getAuthor().getAuthor(),
+                topic.getCourse().getNameCourse().getNameCourse(),
+                topic.getCourse().getId()
         );
-
     }
 
 }

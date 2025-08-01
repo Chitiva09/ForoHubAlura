@@ -9,6 +9,7 @@ import com.alura.foroHub.domain.useCases.ShowAllTopics;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class ShowAllTopicsImpl implements ShowAllTopics {
@@ -27,7 +28,8 @@ public class ShowAllTopicsImpl implements ShowAllTopics {
 
 
         return topics.stream()
-                .map(topic -> topicAppMapper.toDto());
+                .map(topicAppMapper::toDto)
+                .collect(Collectors.toList());
 
     }
 

@@ -2,6 +2,12 @@ package com.alura.foroHub.infrastructure.mapper;
 
 import com.alura.foroHub.domain.model.Course;
 import com.alura.foroHub.domain.model.Topic;
+import com.alura.foroHub.domain.valueObject.course.CategoryVO;
+import com.alura.foroHub.domain.valueObject.course.NameCourseVO;
+import com.alura.foroHub.domain.valueObject.topic.AuthorVO;
+import com.alura.foroHub.domain.valueObject.topic.CreationDateVO;
+import com.alura.foroHub.domain.valueObject.topic.MessageVO;
+import com.alura.foroHub.domain.valueObject.topic.TitleVO;
 import com.alura.foroHub.infrastructure.entity.CourseEntity;
 import com.alura.foroHub.infrastructure.entity.TopicEntity;
 
@@ -14,9 +20,9 @@ public class TopicInfraMapper {
     // De modelo de dominio a entidad de infraestructuraJPA
     public static TopicEntity toEntity(Topic topic, CourseEntity courseEntity) {
         return TopicEntity.builder()
-                .title(topic.getTitle())
-                .message(topic.getMessage())
-                .creationDate(topic.getCreationDate())
+                .title(topic.getTitle().getTitle())
+                .message(topic.getMessage().getMessage())
+                .creationDate(topic.getCreationDate().getCreationDate())
                 .status(topic.isStatus())
                 .courseEntity(courseEntity)
                 .build();
@@ -28,16 +34,16 @@ public class TopicInfraMapper {
 
         Topic.TopicBuilder topicBuilder = Topic.builder()
                 .withId(topicEntity.getId())
-                .withTitle(topicEntity.getTitle())
-                .withMessage(topicEntity.getMessage())
-                .withCreationDate(topicEntity.getCreationDate())
+                .withTitle(new TitleVO(topicEntity.getTitle()))
+                .withMessage( new MessageVO(topicEntity.getMessage()))
+                .withCreationDate(new CreationDateVO(topicEntity.getCreationDate()))
                 .withStatus(topicEntity.isStatus())
-                .withAuthor(topicEntity.getAuthor());
+                .withAuthor(new AuthorVO(topicEntity.getAuthor()));
 
         topicBuilder.withCourse( Course.builder()
                         .withId(topicEntity.getCourseEntity().getId())
-                        .withNameCourse(topicEntity.getCourseEntity().getNameCourse())
-                        .withCategory(topicEntity.getCourseEntity().getCategory())
+                        .withNameCourse(new NameCourseVO(topicEntity.getCourseEntity().getNameCourse()))
+                        .withCategory(new CategoryVO(topicEntity.getCourseEntity().getCategory()))
                         .build())
                 .build();
         return topicBuilder.build();

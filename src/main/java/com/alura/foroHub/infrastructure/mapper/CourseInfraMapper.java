@@ -2,6 +2,8 @@ package com.alura.foroHub.infrastructure.mapper;
 
 
 import com.alura.foroHub.domain.model.Course;
+import com.alura.foroHub.domain.valueObject.course.CategoryVO;
+import com.alura.foroHub.domain.valueObject.course.NameCourseVO;
 import com.alura.foroHub.infrastructure.entity.CourseEntity;
 
 
@@ -11,8 +13,14 @@ public class CourseInfraMapper {
             return null;
         }
 
-        return new Course(courseEntity.getId(), courseEntity.getNameCourse(),courseEntity.getCategory());
+        return new Course(
+                courseEntity.getId(),
+                new NameCourseVO(courseEntity.getNameCourse()),
+                new CategoryVO(courseEntity.getCategory()));
     }
+
+
+
 
     public CourseEntity toEntity (Long idCourse){
         if (idCourse == null){

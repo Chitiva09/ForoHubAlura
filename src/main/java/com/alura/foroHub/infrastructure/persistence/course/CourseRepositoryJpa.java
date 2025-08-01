@@ -1,5 +1,6 @@
 package com.alura.foroHub.infrastructure.persistence.course;
 
+
 import com.alura.foroHub.infrastructure.entity.CourseEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
