@@ -12,6 +12,7 @@ import com.alura.foroHub.infrastructure.entity.CourseEntity;
 import com.alura.foroHub.infrastructure.entity.TopicEntity;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -56,5 +57,11 @@ public class TopicInfraMapper {
         return topicEntityList.stream()
                 .map(TopicInfraMapper::toDomain)
                 .collect(Collectors.toList());
+    }
+
+
+    public static Topic searchByIdToDomain (TopicEntity topicEntity){
+
+        // DEBO IMPLEMENTAR EL MAPPER ACA VA EL FLUJO DEL ENDPOINT QUE ESTOY TERMINANDO
     }
 }

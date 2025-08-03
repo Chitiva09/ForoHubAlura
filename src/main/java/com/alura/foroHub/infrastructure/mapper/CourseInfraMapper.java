@@ -8,7 +8,7 @@ import com.alura.foroHub.infrastructure.entity.CourseEntity;
 
 
 public class CourseInfraMapper {
-    public Course toDomain (CourseEntity courseEntity){
+    public static Course toDomain (CourseEntity courseEntity){
         if (courseEntity == null ){
             return null;
         }
@@ -22,7 +22,7 @@ public class CourseInfraMapper {
 
 
 
-    public CourseEntity toEntity (Long idCourse){
+    public static CourseEntity toEntity (Long idCourse){
         if (idCourse == null){
             return null;
         }

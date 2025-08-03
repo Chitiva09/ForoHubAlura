@@ -10,33 +10,37 @@ import com.alura.foroHub.infrastructure.mapper.CourseInfraMapper;
 import com.alura.foroHub.infrastructure.mapper.TopicInfraMapper;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public class TopicRepositoryJpaAdapter implements TopicRepository {
 
     private final TopicRepositoryJpa jpa;
-    private final TopicInfraMapper topicInfraMapper;
-    private final CourseInfraMapper courseInfraMapper;
 
-    public TopicRepositoryJpaAdapter(TopicRepositoryJpa jpa, TopicInfraMapper topicInfraMapper, CourseInfraMapper courseInfraMapper) {
+
+
+    public TopicRepositoryJpaAdapter(TopicRepositoryJpa jpa) {
         this.jpa = jpa;
-        this.topicInfraMapper = topicInfraMapper;
-        this.courseInfraMapper = courseInfraMapper;
 
     }
 
-
+    @Override
     public void save(Topic topicDomain, Long idCourse) {
-        CourseEntity courseEntity = courseInfraMapper.toEntity(idCourse);
-        TopicEntity topicEntity = topicInfraMapper.toEntity(topicDomain, courseEntity);
+        CourseEntity courseEntity = CourseInfraMapper.toEntity(idCourse);
+        TopicEntity topicEntity = TopicInfraMapper.toEntity(topicDomain, courseEntity);
         jpa.save(topicEntity);
 
     }
 
+    @Override
     public List<Topic> findAll(){
     List<TopicEntity> topics = jpa.findAll();
         return TopicInfraMapper.toDomainList(topics);
     }
 
 
+    public Optional<Topic> findById(Long idTopic) {
+        Optional<TopicEntity> topicEntity = jpa.findById(idTopic);
+        return TopicInfraMapper.searchByIdToDomain(topicEntity);
+    }
 }

@@ -1,8 +1,10 @@
 package com.alura.foroHub.infrastructure.configuration;
 
 
+import com.alura.foroHub.application.UseCase.SearchTopicByIdImpl;
 import com.alura.foroHub.application.UseCase.ShowAllTopicsImpl;
 import com.alura.foroHub.application.mapper.CourseAppMapper;
+import com.alura.foroHub.domain.useCases.SearchTopicById;
 import com.alura.foroHub.domain.useCases.ShowAllTopics;
 import com.alura.foroHub.infrastructure.persistence.course.CourseRepositoryJpa;
 import com.alura.foroHub.infrastructure.persistence.course.CourseRepositoryJpaAdapter;
@@ -26,9 +28,9 @@ public class BeansApplication {
 
     @Bean
     @Primary
-    public TopicRepository topicRepository (TopicRepositoryJpa jpa, TopicInfraMapper topicInfraMapper, CourseInfraMapper courseInfraMapper ){
+    public TopicRepository topicRepository (TopicRepositoryJpa jpa ){
 
-        return new TopicRepositoryJpaAdapter(jpa, topicInfraMapper, courseInfraMapper);
+        return new TopicRepositoryJpaAdapter(jpa);
     }
 
     @Bean
@@ -43,6 +45,11 @@ public class BeansApplication {
                                             FindCourseByName findCourseByName){
 
         return new RegistrationNewTopicImpl(topicAppMapper,topicrepository,findCourseByName );
+    }
+
+    @Bean
+    public SearchTopicById searchTopicById (TopicRepository topicRepository){
+        return new SearchTopicByIdImpl(topicRepository);
     }
 
     @Bean
