@@ -14,7 +14,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class RegistrationNewTopicImpl implements RegistrationNewTopic {
 
-    private final TopicAppMapper topicAppMapper;
     private final TopicRepository topicRepository;
     private final FindCourseByName findCourseByName;
 
@@ -24,7 +23,7 @@ public class RegistrationNewTopicImpl implements RegistrationNewTopic {
 
         Long courseRegistration = findCourseByName.execute(newTopicDtoEntrance.cursoName());
 
-        Topic newTopic = topicAppMapper.toModel(newTopicDtoEntrance, courseRegistration);
+        Topic newTopic = TopicAppMapper.toModel(newTopicDtoEntrance, courseRegistration);
 
         topicRepository.save(newTopic, courseRegistration);
 

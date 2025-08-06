@@ -62,6 +62,20 @@ public class TopicInfraMapper {
 
     public static Topic searchByIdToDomain (TopicEntity topicEntity){
 
-        // DEBO IMPLEMENTAR EL MAPPER ACA VA EL FLUJO DEL ENDPOINT QUE ESTOY TERMINANDO
+        Topic.TopicBuilder topicBuilder = Topic.builder()
+                .withId(topicEntity.getId())
+                .withTitle(new TitleVO(topicEntity.getTitle()))
+                .withCreationDate(new CreationDateVO(topicEntity.getCreationDate()))
+                .withStatus(topicEntity.isStatus())
+                .withAuthor(new AuthorVO(topicEntity.getAuthor()));
+
+        topicBuilder.withCourse(Course.builder()
+                .withId(topicEntity.getCourseEntity().getId())
+                .withNameCourse(new NameCourseVO(topicEntity.getCourseEntity().getNameCourse()))
+                .withCategory(new CategoryVO(topicEntity.getCourseEntity().getCategory()))
+                .build());
+
+        return topicBuilder.build();
     }
+
 }

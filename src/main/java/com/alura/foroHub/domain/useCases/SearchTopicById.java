@@ -4,6 +4,6 @@ import com.alura.foroHub.application.dto.TopicsByIdDtoExit;
 
 public interface SearchTopicById {
 
-    public TopicsByIdDtoExit execute (Long id);
+  TopicsByIdDtoExit execute (Long id);
 
 }

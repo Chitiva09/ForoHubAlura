@@ -7,6 +7,7 @@ import com.alura.foroHub.application.dto.TopicsByIdDtoExit;
 import com.alura.foroHub.domain.useCases.RegistrationNewTopic;
 import com.alura.foroHub.domain.useCases.SearchTopicById;
 import com.alura.foroHub.domain.useCases.ShowAllTopics;
+import com.alura.foroHub.domain.useCases.UpdateTopic;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,9 +24,10 @@ public class TopicController {
     private final ShowAllTopics showAllTopics;
     private final RegistrationNewTopic registrationNewTopicUseCase;
     private final SearchTopicById searchTopicById;
+    private final UpdateTopic updateTopic;
 
     @PostMapping
-    public ResponseEntity<Void> registrationNewTopic (@RequestBody @Valid NewTopicDtoEntrance newTopicDtoEntrance){
+    public ResponseEntity<Void> registrationNewTopic(@RequestBody @Valid NewTopicDtoEntrance newTopicDtoEntrance) {
 
         registrationNewTopicUseCase.execute(newTopicDtoEntrance);
 
@@ -34,7 +36,7 @@ public class TopicController {
 
 
     @GetMapping
-    public ResponseEntity<List<ShowAllTopicsDtoExit>> showAllTopics (){
+    public ResponseEntity<List<ShowAllTopicsDtoExit>> showAllTopics() {
 
         List<ShowAllTopicsDtoExit> topicsDtoExits = showAllTopics.execute();
 
@@ -42,11 +44,18 @@ public class TopicController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<TopicsByIdDtoExit> searchTopicsById (@PathVariable Long idTopic){
+    public ResponseEntity<TopicsByIdDtoExit> searchTopicsById(@PathVariable Long idTopic) {
 
-    TopicsByIdDtoExit topicByIdDtoExit = searchTopicById.execute(idTopic);
+        TopicsByIdDtoExit topicByIdDtoExit = searchTopicById.execute(idTopic);
 
-    return ResponseEntity.ok(topicByIdDtoExit);
+        return ResponseEntity.ok(topicByIdDtoExit);
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<?> updateTopic(@PathVariable Long idTopic, @RequestBody @Valid NewTopicDtoEntrance newTopicDtoEntrance) {
+        updateTopic.execute(idTopic, newTopicDtoEntrance);
+
+        return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 
 }

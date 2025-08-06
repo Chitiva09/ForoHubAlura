@@ -38,9 +38,10 @@ public class TopicRepositoryJpaAdapter implements TopicRepository {
         return TopicInfraMapper.toDomainList(topics);
     }
 
-
+    @Override
     public Optional<Topic> findById(Long idTopic) {
-        Optional<TopicEntity> topicEntity = jpa.findById(idTopic);
-        return TopicInfraMapper.searchByIdToDomain(topicEntity);
+
+        return  jpa.findById(idTopic)
+                .map(TopicInfraMapper::searchByIdToDomain);
     }
 }
