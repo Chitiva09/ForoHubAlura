@@ -4,10 +4,7 @@ package com.alura.foroHub.infrastructure.controller;
 import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
 import com.alura.foroHub.application.dto.ShowAllTopicsDtoExit;
 import com.alura.foroHub.application.dto.TopicsByIdDtoExit;
-import com.alura.foroHub.domain.useCases.RegistrationNewTopic;
-import com.alura.foroHub.domain.useCases.SearchTopicById;
-import com.alura.foroHub.domain.useCases.ShowAllTopics;
-import com.alura.foroHub.domain.useCases.UpdateTopic;
+import com.alura.foroHub.domain.useCases.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -25,6 +22,8 @@ public class TopicController {
     private final RegistrationNewTopic registrationNewTopicUseCase;
     private final SearchTopicById searchTopicById;
     private final UpdateTopic updateTopic;
+    private final DeleteTopicById deleteTopic;
+
 
     @PostMapping
     public ResponseEntity<Void> registrationNewTopic(@RequestBody @Valid NewTopicDtoEntrance newTopicDtoEntrance) {
@@ -56,6 +55,15 @@ public class TopicController {
         updateTopic.execute(idTopic, newTopicDtoEntrance);
 
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteTopicById (@PathVariable Long id){
+
+        deleteTopic.execute(id);
+
+        return ResponseEntity.noContent().build();
+
     }
 
 }

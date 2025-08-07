@@ -2,14 +2,12 @@ package com.alura.foroHub.application.UseCase;
 
 import com.alura.foroHub.application.dto.TopicsByIdDtoExit;
 import com.alura.foroHub.application.exception.TopicByIdNotFoundException;
-import com.alura.foroHub.application.exception.TopicNotFoundException;
 import com.alura.foroHub.application.mapper.TopicAppMapper;
 import com.alura.foroHub.domain.model.Topic;
 import com.alura.foroHub.domain.repository.TopicRepository;
 import com.alura.foroHub.domain.useCases.SearchTopicById;
 import lombok.RequiredArgsConstructor;
 
-import java.util.Optional;
 
 @RequiredArgsConstructor
 public class SearchTopicByIdImpl implements SearchTopicById {

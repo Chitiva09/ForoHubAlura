@@ -1,6 +1,5 @@
 package com.alura.foroHub.application.mapper;
 
-import java.time.LocalDateTime;
 
 import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
 import com.alura.foroHub.application.dto.ShowAllTopicsDtoExit;

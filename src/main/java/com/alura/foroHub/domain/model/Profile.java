@@ -1,6 +1,5 @@
 package com.alura.foroHub.domain.model;
 
-import com.alura.foroHub.domain.valueObject.course.NameCourseVO;
 import com.alura.foroHub.domain.valueObject.profile.NameProfileVO;
 
 import java.util.ArrayList;

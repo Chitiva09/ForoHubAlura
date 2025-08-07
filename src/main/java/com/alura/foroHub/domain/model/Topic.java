@@ -5,7 +5,6 @@ import com.alura.foroHub.domain.valueObject.topic.CreationDateVO;
 import com.alura.foroHub.domain.valueObject.topic.MessageVO;
 import com.alura.foroHub.domain.valueObject.topic.TitleVO;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 

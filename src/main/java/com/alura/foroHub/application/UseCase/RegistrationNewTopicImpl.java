@@ -3,7 +3,7 @@ package com.alura.foroHub.application.UseCase;
 
 import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
 import com.alura.foroHub.application.mapper.TopicAppMapper;
-import com.alura.foroHub.domain.model.Course;
+
 import com.alura.foroHub.domain.model.Topic;
 
 import com.alura.foroHub.domain.repository.TopicRepository;

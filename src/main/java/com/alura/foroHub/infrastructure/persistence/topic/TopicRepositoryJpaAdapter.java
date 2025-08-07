@@ -44,4 +44,9 @@ public class TopicRepositoryJpaAdapter implements TopicRepository {
         return  jpa.findById(idTopic)
                 .map(TopicInfraMapper::searchByIdToDomain);
     }
+
+    @Override
+    public void deleteById (Long id){
+        jpa.deleteById(id);
+    }
 }

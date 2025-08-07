@@ -4,9 +4,8 @@ import com.alura.foroHub.domain.valueObject.answer.AuthorAnswerVO;
 import com.alura.foroHub.domain.valueObject.answer.CreationDateAnswerVO;
 import com.alura.foroHub.domain.valueObject.answer.MessageAnswerVO;
 import com.alura.foroHub.domain.valueObject.answer.SolutionVO;
-import com.alura.foroHub.infrastructure.entity.TopicEntity;
 
-import java.time.LocalDateTime;
+
 
 public class Answer {
 
