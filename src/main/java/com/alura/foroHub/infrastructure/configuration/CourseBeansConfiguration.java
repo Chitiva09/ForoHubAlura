@@ -14,9 +14,9 @@ import org.springframework.context.annotation.Configuration;
 public class CourseBeansConfiguration {
 
     @Bean
-    public CourseRepository courseRepository (CourseRepositoryJpa jpa, CourseInfraMapper courseInfraMapper){
+    public CourseRepository courseRepository (CourseRepositoryJpa jpa){
 
-        return new CourseRepositoryJpaAdapter(jpa, courseInfraMapper);
+        return new CourseRepositoryJpaAdapter(jpa);
     }
 
     @Bean

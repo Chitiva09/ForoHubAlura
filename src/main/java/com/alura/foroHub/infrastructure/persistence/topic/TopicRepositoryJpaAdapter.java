@@ -8,28 +8,23 @@ import com.alura.foroHub.infrastructure.entity.CourseEntity;
 import com.alura.foroHub.infrastructure.entity.TopicEntity;
 import com.alura.foroHub.infrastructure.mapper.CourseInfraMapper;
 import com.alura.foroHub.infrastructure.mapper.TopicInfraMapper;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
 
-
+@RequiredArgsConstructor
 public class TopicRepositoryJpaAdapter implements TopicRepository {
 
     private final TopicRepositoryJpa jpa;
 
-
-
-    public TopicRepositoryJpaAdapter(TopicRepositoryJpa jpa) {
-        this.jpa = jpa;
-
-    }
-
     @Override
-    public void save(Topic topicDomain, Long idCourse) {
+    public Topic save(Topic topicDomain, Long idCourse) {
         CourseEntity courseEntity = CourseInfraMapper.toEntity(idCourse);
         TopicEntity topicEntity = TopicInfraMapper.toEntity(topicDomain, courseEntity);
         jpa.save(topicEntity);
 
+        return TopicInfraMapper.toDomain(topicEntity);
     }
 
     @Override

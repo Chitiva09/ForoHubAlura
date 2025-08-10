@@ -1,6 +1,7 @@
 package com.alura.foroHub.application.mapper;
 
 
+import com.alura.foroHub.application.dto.CreateTopicDtoExit;
 import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
 import com.alura.foroHub.application.dto.ShowAllTopicsDtoExit;
 import com.alura.foroHub.application.dto.TopicsByIdDtoExit;
@@ -45,5 +46,17 @@ public class TopicAppMapper {
                 topic.getAuthor().getAuthor(),
                 topic.getCourse().getNameCourse().getNameCourse()
         );
+    }
+
+    public static CreateTopicDtoExit toCreateTopicDtoExit(Topic topic){
+
+        return new CreateTopicDtoExit(
+                topic.getTitle().getTitle(),
+                topic.getMessage().getMessage(),
+                topic.getAuthor().getAuthor(),
+                topic.getId()
+        );
+
+
     }
 }

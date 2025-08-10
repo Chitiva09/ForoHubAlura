@@ -1,6 +1,7 @@
 package com.alura.foroHub.infrastructure.controller;
 
 
+import com.alura.foroHub.application.dto.CreateTopicDtoExit;
 import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
 import com.alura.foroHub.application.dto.ShowAllTopicsDtoExit;
 import com.alura.foroHub.application.dto.TopicsByIdDtoExit;
@@ -10,7 +11,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -26,11 +29,16 @@ public class TopicController {
 
 
     @PostMapping
-    public ResponseEntity<Void> registrationNewTopic(@RequestBody @Valid NewTopicDtoEntrance newTopicDtoEntrance) {
+    public ResponseEntity<CreateTopicDtoExit> registrationNewTopic(@RequestBody @Valid NewTopicDtoEntrance newTopicDtoEntrance, UriComponentsBuilder uriBuilder) {
 
-        registrationNewTopicUseCase.execute(newTopicDtoEntrance);
+        CreateTopicDtoExit savedTopic = registrationNewTopicUseCase.execute(newTopicDtoEntrance);
 
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+        URI location = uriBuilder
+                .path("/topics/{id}")
+                .buildAndExpand(savedTopic.id())
+                .toUri();
+
+        return ResponseEntity.created(location).body(savedTopic);
     }
 
 
@@ -58,7 +66,7 @@ public class TopicController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTopicById (@PathVariable Long id){
+    public ResponseEntity<Void> deleteTopicById(@PathVariable Long id) {
 
         deleteTopic.execute(id);
 

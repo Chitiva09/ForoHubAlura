@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface TopicRepository {
-    void save(Topic topic, Long  idCourse);
+    Topic save(Topic topic, Long  idCourse);
     List<Topic> findAll ();
     Optional<Topic> findById (Long idTopic);
     void deleteById (Long idTopic);

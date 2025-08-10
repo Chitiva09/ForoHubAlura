@@ -1,6 +1,7 @@
 package com.alura.foroHub.application.UseCase;
 
 
+import com.alura.foroHub.application.dto.CreateTopicDtoExit;
 import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
 import com.alura.foroHub.application.mapper.TopicAppMapper;
 
@@ -18,14 +19,17 @@ public class RegistrationNewTopicImpl implements RegistrationNewTopic {
     private final FindCourseByName findCourseByName;
 
     @Override
-    public void execute(NewTopicDtoEntrance newTopicDtoEntrance) {
+    public CreateTopicDtoExit execute(NewTopicDtoEntrance newTopicDtoEntrance) {
 
 
         Long courseRegistration = findCourseByName.execute(newTopicDtoEntrance.cursoName());
 
         Topic newTopic = TopicAppMapper.toModel(newTopicDtoEntrance, courseRegistration);
 
-        topicRepository.save(newTopic, courseRegistration);
+
+        Topic savedTopic = topicRepository.save(newTopic, courseRegistration);
+
+        return TopicAppMapper.toCreateTopicDtoExit(savedTopic);
 
     }
 
