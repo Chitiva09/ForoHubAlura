@@ -1,4 +1,4 @@
-package com.alura.foroHub.application.dto;
+package com.alura.foroHub.application.dto.topic;
 
 import jakarta.validation.constraints.NotBlank;
 

@@ -1,4 +1,4 @@
-package com.alura.foroHub.domain.useCases;
+package com.alura.foroHub.domain.useCases.topic;
 
 public interface DeleteTopicById {
 

@@ -9,8 +9,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-@Entity(name = "App_User")
-@Table(name = "app_user")
+@Entity(name = "User_Model")
+@Table(name = "user_model")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -21,6 +21,7 @@ public class UserEntity {
 
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String userName;
     private String email;

@@ -1,8 +1,8 @@
-package com.alura.foroHub.application.UseCase;
+package com.alura.foroHub.application.UseCase.topic;
 
 import com.alura.foroHub.domain.repository.TopicRepository;
-import com.alura.foroHub.domain.useCases.DeleteTopicById;
-import com.alura.foroHub.domain.useCases.SearchTopicById;
+import com.alura.foroHub.domain.useCases.topic.DeleteTopicById;
+import com.alura.foroHub.domain.useCases.topic.SearchTopicById;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

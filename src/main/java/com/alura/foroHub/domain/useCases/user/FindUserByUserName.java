@@ -1,4 +1,4 @@
-package com.alura.foroHub.domain.useCases;
+package com.alura.foroHub.domain.useCases.user;
 
 import com.alura.foroHub.domain.model.UserModel;
 

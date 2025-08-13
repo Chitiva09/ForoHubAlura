@@ -16,6 +16,7 @@ import java.util.List;
 @Builder
 public class CourseEntity {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nameCourse;
     private String category;

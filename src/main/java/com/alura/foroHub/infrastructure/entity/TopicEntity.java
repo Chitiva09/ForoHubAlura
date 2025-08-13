@@ -35,7 +35,7 @@ public class TopicEntity {
     private List<AnswersEntity> answers;
 
     @ManyToOne
-    @JoinColumn(name = "app_user_id")
+    @JoinColumn(name = "user_model_id")
     private UserEntity userEntity;
 
 }

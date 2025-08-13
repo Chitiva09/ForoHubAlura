@@ -1,14 +1,14 @@
 package com.alura.foroHub.infrastructure.configuration;
 
-import com.alura.foroHub.application.UseCase.*;
+import com.alura.foroHub.application.UseCase.topic.*;
 import com.alura.foroHub.application.mapper.TopicAppMapper;
 import com.alura.foroHub.domain.repository.TopicRepository;
-import com.alura.foroHub.domain.useCases.*;
+import com.alura.foroHub.domain.useCases.course.FindCourseByName;
+import com.alura.foroHub.domain.useCases.topic.*;
 import com.alura.foroHub.infrastructure.mapper.TopicInfraMapper;
 import com.alura.foroHub.infrastructure.persistence.topic.TopicRepositoryJpa;
 import com.alura.foroHub.infrastructure.persistence.topic.TopicRepositoryJpaAdapter;
 
-import org.hibernate.sql.Update;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

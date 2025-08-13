@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 public class AnswersEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String message;
     private LocalDateTime creationDate;
@@ -26,7 +27,7 @@ public class AnswersEntity {
     @JoinColumn(name = "topic_id")
     private TopicEntity topicEntity;
     @ManyToOne
-    @JoinColumn(name = "app_user_id")
+    @JoinColumn(name = "user_model_id")
     private UserEntity userEntity;
 
 }

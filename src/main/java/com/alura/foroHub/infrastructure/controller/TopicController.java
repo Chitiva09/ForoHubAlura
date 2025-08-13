@@ -1,11 +1,11 @@
 package com.alura.foroHub.infrastructure.controller;
 
 
-import com.alura.foroHub.application.dto.CreateTopicDtoExit;
-import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
-import com.alura.foroHub.application.dto.ShowAllTopicsDtoExit;
-import com.alura.foroHub.application.dto.TopicsByIdDtoExit;
-import com.alura.foroHub.domain.useCases.*;
+import com.alura.foroHub.application.dto.topic.CreateTopicDtoExit;
+import com.alura.foroHub.application.dto.topic.NewTopicDtoEntrance;
+import com.alura.foroHub.application.dto.topic.ShowAllTopicsDtoExit;
+import com.alura.foroHub.application.dto.topic.TopicsByIdDtoExit;
+import com.alura.foroHub.domain.useCases.topic.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;

@@ -6,4 +6,5 @@ public interface UserRepository {
 
     UserModel findByUserName(String userName);
 
+    void save(UserModel userModel);
 }

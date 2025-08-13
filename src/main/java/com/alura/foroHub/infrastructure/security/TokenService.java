@@ -11,19 +11,21 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
-public class TokenService {
+import static java.time.ZoneOffset.UTC;
 
+public class TokenService {
+    //con esta línea obtengo el secret de properties y se lo inyecto a la variable secret
     @Value("${api.security.token.secret}")
-//con esta línea obtengo el secret de properties y se lo inyecto a la variable secret
     private String secret;
 
-    public String generateToken(UserModel userModel) {
+    //este metodo genera un token
+    public String generateToken(CustomUserDetails customUserDetails) {
 
         try {
             var algorithm = Algorithm.HMAC256(secret);
             return JWT.create()
                     .withIssuer("API ForoHub")
-                    .withSubject(userModel.getUserName().getUserName())
+                    .withSubject(customUserDetails.getUserModel().getUserName().toString())
                     .withExpiresAt(expirationDate())
                     .sign(algorithm);
         } catch (JWTCreationException exception) {
@@ -33,7 +35,7 @@ public class TokenService {
     }
 
     private Instant expirationDate() {
-        return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.UTC);
+        return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.systemDefault().getRules().getOffset(LocalDateTime.now()));
     }
 
     public String getSubject(String tokenJWT) {
@@ -50,6 +52,6 @@ public class TokenService {
         } catch (JWTVerificationException exception) {
             throw new RuntimeException("Token JWT invalido o expirado");
         }
-
+//el error debe ser acá
     }
 }

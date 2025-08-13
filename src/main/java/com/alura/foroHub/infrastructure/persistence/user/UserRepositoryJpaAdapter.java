@@ -20,5 +20,10 @@ public class UserRepositoryJpaAdapter implements UserRepository {
         return UserInfraMapper.toModel(userEntity);
     }
 
+    @Override
+    public void save (UserModel userModel){
+        UserEntity userEntity = UserInfraMapper.toEntity(userModel);
+        jpa.save(userEntity);
+    }
 
 }

@@ -1,23 +1,25 @@
 package com.alura.foroHub.infrastructure.security;
 
 import com.alura.foroHub.domain.model.UserModel;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 @RequiredArgsConstructor
+@Getter
 public class CustomUserDetails implements UserDetails {
 
     private final UserModel userModel;
 
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        return Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
     @Override

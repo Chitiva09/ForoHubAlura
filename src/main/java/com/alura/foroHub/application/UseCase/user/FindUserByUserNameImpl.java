@@ -1,9 +1,9 @@
-package com.alura.foroHub.application.UseCase;
+package com.alura.foroHub.application.UseCase.user;
 
 import com.alura.foroHub.application.exception.UserNotFoundException;
 import com.alura.foroHub.domain.model.UserModel;
 import com.alura.foroHub.domain.repository.UserRepository;
-import com.alura.foroHub.domain.useCases.FindUserByUserName;
+import com.alura.foroHub.domain.useCases.user.FindUserByUserName;
 import lombok.RequiredArgsConstructor;
 
 //Este caso de uso lo utiliza el SecurityUserDetailsService para hacer su validation

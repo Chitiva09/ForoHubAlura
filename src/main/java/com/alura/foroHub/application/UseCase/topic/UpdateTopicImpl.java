@@ -1,12 +1,12 @@
-package com.alura.foroHub.application.UseCase;
+package com.alura.foroHub.application.UseCase.topic;
 
 
-import com.alura.foroHub.application.dto.NewTopicDtoEntrance;
+import com.alura.foroHub.application.dto.topic.NewTopicDtoEntrance;
 import com.alura.foroHub.application.mapper.TopicAppMapper;
 import com.alura.foroHub.domain.model.Topic;
 import com.alura.foroHub.domain.repository.TopicRepository;
-import com.alura.foroHub.domain.useCases.SearchTopicById;
-import com.alura.foroHub.domain.useCases.UpdateTopic;
+import com.alura.foroHub.domain.useCases.topic.SearchTopicById;
+import com.alura.foroHub.domain.useCases.topic.UpdateTopic;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor

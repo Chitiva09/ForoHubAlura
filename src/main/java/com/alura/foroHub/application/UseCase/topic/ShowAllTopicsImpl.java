@@ -1,11 +1,11 @@
-package com.alura.foroHub.application.UseCase;
+package com.alura.foroHub.application.UseCase.topic;
 
-import com.alura.foroHub.application.dto.ShowAllTopicsDtoExit;
+import com.alura.foroHub.application.dto.topic.ShowAllTopicsDtoExit;
 import com.alura.foroHub.application.exception.TopicNotFoundException;
 import com.alura.foroHub.application.mapper.TopicAppMapper;
 import com.alura.foroHub.domain.model.Topic;
 import com.alura.foroHub.domain.repository.TopicRepository;
-import com.alura.foroHub.domain.useCases.ShowAllTopics;
+import com.alura.foroHub.domain.useCases.topic.ShowAllTopics;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
