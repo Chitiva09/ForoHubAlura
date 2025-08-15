@@ -8,6 +8,7 @@ import com.alura.foroHub.application.dto.topic.TopicsByIdDtoExit;
 import com.alura.foroHub.domain.model.Course;
 import com.alura.foroHub.domain.model.Topic;
 import com.alura.foroHub.domain.valueObject.topic.AuthorVO;
+import com.alura.foroHub.domain.valueObject.topic.CreationDateVO;
 import com.alura.foroHub.domain.valueObject.topic.MessageVO;
 import com.alura.foroHub.domain.valueObject.topic.TitleVO;
 
@@ -19,6 +20,7 @@ public class TopicAppMapper {
                 .withTitle(new TitleVO(newTopicDtoEntrance.title()))
                 .withMessage(new MessageVO(newTopicDtoEntrance.message()))
                 .withAuthor(new AuthorVO(newTopicDtoEntrance.author()))
+                .withCreationDate(CreationDateVO.now())
                 .withCourse(Course.builder()
                         .withId(newTopicDtoEntrance.courseId())
                         .build())

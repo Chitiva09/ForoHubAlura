@@ -9,10 +9,14 @@ public final class CreationDateVO {
     private final LocalDateTime creationDate;
 
     public CreationDateVO(LocalDateTime creationDate) {
+
         if (creationDate == null) {
             throw new IllegalArgumentException("La fecha de creación no puede ser nula");
         }
         this.creationDate = creationDate;
+    }
+    public static CreationDateVO now(){
+        return new CreationDateVO(LocalDateTime.now());
     }
 
     public LocalDateTime getCreationDate() {

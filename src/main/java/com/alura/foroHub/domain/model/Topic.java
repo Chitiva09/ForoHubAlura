@@ -5,6 +5,7 @@ import com.alura.foroHub.domain.valueObject.topic.CreationDateVO;
 import com.alura.foroHub.domain.valueObject.topic.MessageVO;
 import com.alura.foroHub.domain.valueObject.topic.TitleVO;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,18 @@ public class Topic {
         this.answers = builder.answers;
         this.userModel = builder.userModel;
     }
+
+    public Topic(TitleVO title, MessageVO message, CreationDateVO creationDateVO, Course course) {
+        this.title = title;
+        this.message = message;
+        this.creationDate = creationDateVO;
+        this.course = course;
+    }
+
+    public static Topic createNew(TitleVO title, MessageVO message, Course course) {
+        return new Topic(title, message, new CreationDateVO(LocalDateTime.now()), course);
+    }
+
 
     // Método estático para crear el Builder
     public static TopicBuilder builder() {
@@ -114,73 +127,29 @@ public class Topic {
     public Long getId() {
         return id;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public TitleVO getTitle() {
         return title;
     }
-
-    public void setTitle(TitleVO title) {
-        this.title = title;
-    }
-
     public MessageVO getMessage() {
         return message;
     }
-
-    public void setMessage(MessageVO message) {
-        this.message = message;
-    }
-
     public CreationDateVO getCreationDate() {
         return creationDate;
     }
-
-    public void setCreationDate(CreationDateVO creationDate) {
-        this.creationDate = creationDate;
-    }
-
     public boolean isStatus() {
         return status;
     }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
     public AuthorVO getAuthor() {
         return author;
     }
-
-    public void setAuthor(AuthorVO author) {
-        this.author = author;
-    }
-
     public Course getCourse() {
         return course;
     }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
     public List<Answer> getAnswers() {
         return answers;
     }
-
-    public void setAnswers(List<Answer> answers) {
-        this.answers = answers;
-    }
-
     public UserModel getUserModel() {
         return userModel;
-    }
-
-    public void setUserModel(UserModel userModel) {
-        this.userModel = userModel;
     }
 
 

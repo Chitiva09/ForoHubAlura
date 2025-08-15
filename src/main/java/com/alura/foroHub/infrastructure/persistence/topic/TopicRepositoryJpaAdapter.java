@@ -10,6 +10,7 @@ import com.alura.foroHub.infrastructure.mapper.CourseInfraMapper;
 import com.alura.foroHub.infrastructure.mapper.TopicInfraMapper;
 import lombok.RequiredArgsConstructor;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
