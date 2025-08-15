@@ -20,7 +20,7 @@ public class TopicRepositoryJpaAdapter implements TopicRepository {
 
     @Override
     public Topic save(Topic topicDomain, Long idCourse) {
-        CourseEntity courseEntity = CourseInfraMapper.toEntity(idCourse);
+        CourseEntity courseEntity = CourseInfraMapper.toEntityId(idCourse);
         TopicEntity topicEntity = TopicInfraMapper.toEntity(topicDomain, courseEntity);
         jpa.save(topicEntity);
 
@@ -44,4 +44,6 @@ public class TopicRepositoryJpaAdapter implements TopicRepository {
     public void deleteById (Long id){
         jpa.deleteById(id);
     }
+
+    //Debo revisar por que la fecha de creacion esta llegando null
 }

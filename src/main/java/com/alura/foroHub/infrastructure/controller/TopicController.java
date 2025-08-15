@@ -33,7 +33,7 @@ public class TopicController {
 
         CreateTopicDtoExit savedTopic = registrationNewTopicUseCase.execute(newTopicDtoEntrance);
 
-        URI location = uriBuilder
+        URI location = uriBuilder // retorna la url para consultar ese topic en específico
                 .path("/topics/{id}")
                 .buildAndExpand(savedTopic.id())
                 .toUri();

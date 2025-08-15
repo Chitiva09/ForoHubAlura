@@ -19,7 +19,7 @@ public class UpdateTopicImpl implements UpdateTopic {
     public void execute(Long idTopic, NewTopicDtoEntrance newTopicDtoEntrance) {
         searchTopicById.execute(idTopic);
 
-        Topic updateTopic = TopicAppMapper.toModel(newTopicDtoEntrance, idTopic);
+        Topic updateTopic = TopicAppMapper.toModel(newTopicDtoEntrance);
 
         topicRepository.save(updateTopic, idTopic);
 

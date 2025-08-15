@@ -14,12 +14,14 @@ import com.alura.foroHub.domain.valueObject.topic.TitleVO;
 
 public class TopicAppMapper {
 
-    public static Topic toModel(NewTopicDtoEntrance newTopicDtoEntrance, Long courseId) {
+    public static Topic toModel(NewTopicDtoEntrance newTopicDtoEntrance) {
         return Topic.builder()
                 .withTitle(new TitleVO(newTopicDtoEntrance.title()))
                 .withMessage(new MessageVO(newTopicDtoEntrance.message()))
                 .withAuthor(new AuthorVO(newTopicDtoEntrance.author()))
-                .withCourse(Course.builder().withId(courseId).build())
+                .withCourse(Course.builder()
+                        .withId(newTopicDtoEntrance.courseId())
+                        .build())
 
 
                 .build();

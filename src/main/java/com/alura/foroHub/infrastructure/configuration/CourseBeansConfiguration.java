@@ -1,9 +1,13 @@
 package com.alura.foroHub.infrastructure.configuration;
 
 import com.alura.foroHub.application.UseCase.course.FindCourseByNameImpl;
+import com.alura.foroHub.application.UseCase.course.RegistrationNewCourseImpl;
+import com.alura.foroHub.application.UseCase.course.ShowAllCoursesImpl;
 import com.alura.foroHub.application.mapper.CourseAppMapper;
 import com.alura.foroHub.domain.repository.CourseRepository;
 import com.alura.foroHub.domain.useCases.course.FindCourseByName;
+import com.alura.foroHub.domain.useCases.course.RegistrationNewCourse;
+import com.alura.foroHub.domain.useCases.user.ShowAllCourses;
 import com.alura.foroHub.infrastructure.mapper.CourseInfraMapper;
 import com.alura.foroHub.infrastructure.persistence.course.CourseRepositoryJpa;
 import com.alura.foroHub.infrastructure.persistence.course.CourseRepositoryJpaAdapter;
@@ -32,5 +36,15 @@ public class CourseBeansConfiguration {
     public FindCourseByName findCourseByName (CourseRepository courseRepository){
 
         return new FindCourseByNameImpl(courseRepository);
+    }
+
+    @Bean
+    public RegistrationNewCourse registrationNewCourse (FindCourseByName findCourseByName, CourseRepository courseRepository){
+        return new RegistrationNewCourseImpl(findCourseByName, courseRepository);
+    }
+
+    @Bean
+    public ShowAllCourses showAllCourses (CourseRepository courseRepository){
+        return new ShowAllCoursesImpl(courseRepository);
     }
 }
