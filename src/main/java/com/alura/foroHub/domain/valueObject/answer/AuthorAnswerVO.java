@@ -34,4 +34,6 @@ public final class AuthorAnswerVO {
     public String toString() {
         return authorAnswer;
     }
+
+
 }

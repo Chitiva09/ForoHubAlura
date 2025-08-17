@@ -10,6 +10,7 @@ import com.alura.foroHub.domain.valueObject.topic.MessageVO;
 import com.alura.foroHub.domain.valueObject.topic.TitleVO;
 import com.alura.foroHub.infrastructure.entity.CourseEntity;
 import com.alura.foroHub.infrastructure.entity.TopicEntity;
+import org.springframework.data.domain.Page;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -27,6 +28,7 @@ public class TopicInfraMapper {
                 .creationDate(topic.getCreationDate().getCreationDate())
                 .status(topic.isStatus())
                 .courseEntity(courseEntity)
+
                 .build();
     }
 
@@ -42,7 +44,6 @@ public class TopicInfraMapper {
                 .withCreationDate(new CreationDateVO(topicEntity.getCreationDate()))
                 .withStatus(topicEntity.isStatus())
                 .withAuthor(new AuthorVO(topicEntity.getAuthor()));
-//aca tengo este error : El nombre del curso no puede estar vacío
         topicBuilder.withCourse(Course.builder()
                         .withId(topicEntity.getCourseEntity().getId())
                         .withNameCourse(new NameCourseVO(topicEntity.getCourseEntity().getNameCourse()))
@@ -53,29 +54,9 @@ public class TopicInfraMapper {
     }
 
     // este metodo lo uso para devolver un list al domain
-    public static List<Topic> toDomainList(List<TopicEntity> topicEntityList) {
+    public static Page<Topic> toDomainList(Page<TopicEntity> topicEntityList) {
 
-        return topicEntityList.stream()
-                .map(TopicInfraMapper::toDomain)
-                .collect(Collectors.toList());
-    }
-
-    public static Topic searchByIdToDomain(TopicEntity topicEntity) {
-
-        Topic.TopicBuilder topicBuilder = Topic.builder()
-                .withId(topicEntity.getId())
-                .withTitle(new TitleVO(topicEntity.getTitle()))
-                .withCreationDate(new CreationDateVO(topicEntity.getCreationDate()))
-                .withStatus(topicEntity.isStatus())
-                .withAuthor(new AuthorVO(topicEntity.getAuthor()));
-
-        topicBuilder.withCourse(Course.builder()
-                .withId(topicEntity.getCourseEntity().getId())
-                .withNameCourse(new NameCourseVO(topicEntity.getCourseEntity().getNameCourse()))
-                .withCategory(new CategoryVO(topicEntity.getCourseEntity().getCategory()))
-                .build());
-
-        return topicBuilder.build();
+        return topicEntityList.map(TopicInfraMapper::toDomain);
     }
 
 }

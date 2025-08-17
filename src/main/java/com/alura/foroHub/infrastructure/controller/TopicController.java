@@ -8,6 +8,9 @@ import com.alura.foroHub.application.dto.topic.TopicsByIdDtoExit;
 import com.alura.foroHub.domain.useCases.topic.*;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,40 +30,37 @@ public class TopicController {
     private final UpdateTopic updateTopic;
     private final DeleteTopicById deleteTopic;
 
-
+    //funcioan ok
     @PostMapping
     public ResponseEntity<CreateTopicDtoExit> registrationNewTopic(@RequestBody @Valid NewTopicDtoEntrance newTopicDtoEntrance, UriComponentsBuilder uriBuilder) {
-
         CreateTopicDtoExit savedTopic = registrationNewTopicUseCase.execute(newTopicDtoEntrance);
-
         URI location = uriBuilder // retorna la url para consultar ese topic en específico
                 .path("/topics/{id}")
                 .buildAndExpand(savedTopic.id())
                 .toUri();
-
         return ResponseEntity.created(location).body(savedTopic);
     }
-
-
+    //funciona ok
     @GetMapping
-    public ResponseEntity<List<ShowAllTopicsDtoExit>> showAllTopics() {
+    public ResponseEntity<Page<ShowAllTopicsDtoExit>> showAllTopics(@PageableDefault(size=5 , sort = {"creationDate"}) Pageable pageable) {
 
-        List<ShowAllTopicsDtoExit> topicsDtoExits = showAllTopics.execute();
+        Page<ShowAllTopicsDtoExit> topicsDtoExits = ( showAllTopics.execute(pageable));
 
         return ResponseEntity.ok(topicsDtoExits);
     }
-
+    //funciona ok
     @GetMapping(value = "/{id}")
-    public ResponseEntity<TopicsByIdDtoExit> searchTopicsById(@PathVariable Long idTopic) {
+    public ResponseEntity<TopicsByIdDtoExit> searchTopicsById(@PathVariable Long id) {
 
-        TopicsByIdDtoExit topicByIdDtoExit = searchTopicById.execute(idTopic);
+        TopicsByIdDtoExit topicByIdDtoExit = searchTopicById.execute(id);
 
         return ResponseEntity.ok(topicByIdDtoExit);
     }
 
+
     @PutMapping(value = "/{id}")
-    public ResponseEntity<?> updateTopic(@PathVariable Long idTopic, @RequestBody @Valid NewTopicDtoEntrance newTopicDtoEntrance) {
-        updateTopic.execute(idTopic, newTopicDtoEntrance);
+    public ResponseEntity<?> updateTopic(@PathVariable Long id, @RequestBody @Valid NewTopicDtoEntrance newTopicDtoEntrance) {
+        updateTopic.execute(id, newTopicDtoEntrance);
 
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }

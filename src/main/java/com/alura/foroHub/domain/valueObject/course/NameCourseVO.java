@@ -1,6 +1,11 @@
 package com.alura.foroHub.domain.valueObject.course;
 
+
+
+import com.alura.foroHub.domain.model.Course;
+
 import java.util.Objects;
+
 
 public final class NameCourseVO {
 
@@ -11,10 +16,6 @@ public final class NameCourseVO {
             throw new IllegalArgumentException("El nombre del curso no puede estar vacío");
         }
         this.nameCourse = nameCourse;
-    }
-
-    public String getNameCourse() {
-        return nameCourse;
     }
 
     @Override
@@ -34,4 +35,9 @@ public final class NameCourseVO {
     public String toString() {
         return nameCourse;
     }
+
+    public String getNameCourse() {
+        return nameCourse;
+    }
+
 }

@@ -13,11 +13,9 @@ public class FindCourseByNameImpl implements FindCourseByName {
 
     //Optional nunca es null: Un Optional es un objeto contenedor. Cuando courseRepository.findByNameCourse no encuentra un curso, no devuelve null. Devuelve un objeto Optional vacío (Optional.empty()). Por eso, tu condición if (course == null) nunca se cumplirá.
     @Override
-    public Long execute(String nameCourse) {
+    public Optional<Course> execute(String nameCourse) {
 
-        return courseRepository.findByNameCourse(nameCourse)
-                .map(Course::getId)
-                .orElse(null);
+        return courseRepository.findByNameCourse(nameCourse);
     }
 }
 

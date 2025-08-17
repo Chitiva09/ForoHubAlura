@@ -1,6 +1,10 @@
 package com.alura.foroHub.domain.useCases.course;
 
 
+import com.alura.foroHub.domain.model.Course;
+
+import java.util.Optional;
+
 public interface FindCourseByName {
-    Long execute (String nameCourse);
+    Optional<Course> execute (String nameCourse);
 }

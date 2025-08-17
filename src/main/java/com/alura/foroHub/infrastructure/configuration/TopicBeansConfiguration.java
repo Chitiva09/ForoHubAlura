@@ -38,8 +38,8 @@ public class TopicBeansConfiguration {
     }
 
     @Bean
-    public UpdateTopic updateTopic(TopicRepository topicRepository, SearchTopicById searchTopicById) {
-        return new UpdateTopicImpl(searchTopicById, topicRepository );
+    public UpdateTopic updateTopic(TopicRepository topicRepository, SearchTopicById searchTopicById, FindCourseByName findCourseByName) {
+        return new UpdateTopicImpl(searchTopicById, topicRepository, findCourseByName );
     }
 
     @Bean

@@ -7,7 +7,10 @@ import com.alura.foroHub.domain.model.Topic;
 import com.alura.foroHub.domain.repository.TopicRepository;
 import com.alura.foroHub.domain.useCases.topic.ShowAllTopics;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,18 +20,16 @@ public class ShowAllTopicsImpl implements ShowAllTopics {
     private final TopicRepository topicRepository;
 
     @Override
-    public List<ShowAllTopicsDtoExit> execute() {
+    public Page<ShowAllTopicsDtoExit> execute(Pageable pageable) {
 
-        List<Topic> topics = topicRepository.findAll();
+        Page<Topic> topics = topicRepository.findAll(pageable);
+
         if (topics.isEmpty()) {
             throw new TopicNotFoundException();
 
         }
 
-
-        return topics.stream()
-                .map(TopicAppMapper::toDto)
-                .collect(Collectors.toList());
+        return topics.map(TopicAppMapper::toDto);
 
     }
 

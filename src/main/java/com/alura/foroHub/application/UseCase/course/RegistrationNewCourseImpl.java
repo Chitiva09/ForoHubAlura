@@ -11,6 +11,8 @@ import com.alura.foroHub.domain.useCases.course.FindCourseByName;
 import com.alura.foroHub.domain.useCases.course.RegistrationNewCourse;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 public class RegistrationNewCourseImpl implements RegistrationNewCourse {
     private final FindCourseByName findCourseByName;
@@ -19,8 +21,8 @@ public class RegistrationNewCourseImpl implements RegistrationNewCourse {
     @Override
     public NewCourseDtoExit execute(NewCourseDtoEntrance newCourseDtoEntrance) {
         //necesito validar que el curso no vaya a estar repetido
-        Long courseBd = findCourseByName.execute(newCourseDtoEntrance.nameCourse());
-        if (courseBd != null) {
+        Optional<Course> courseBd = findCourseByName.execute(newCourseDtoEntrance.nameCourse());
+        if (courseBd.isPresent()) {
             throw new CourseAlreadyExistsException(newCourseDtoEntrance.nameCourse());
         }
 
