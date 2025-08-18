@@ -207,7 +207,3 @@ La API responderá con `200 OK` y los datos del tópico actualizado.
 ## 🗃️ Migraciones de Base de Datos
 
 El proyecto utiliza **Flyway** para gestionar las migraciones de la base de datos. Las tablas y la estructura inicial se crearán y actualizarán automáticamente la primera vez que se ejecute la aplicación después de un cambio en los scripts de migración ubicados en `src/main/resources/db/migration`.
-
-## 📄 Licencia
-
-Este proyecto está distribuido bajo la Licencia MIT. Consulta el archivo `LICENSE` para más detalles.
