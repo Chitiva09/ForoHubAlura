@@ -1,17 +1,15 @@
 package com.alura.foroHub.application.dto.topic;
 
-import jakarta.validation.constraints.NotBlank;
-
 import java.time.LocalDateTime;
 
 public record TopicsByIdDtoExit(
-        @NotBlank Long id,
-        @NotBlank String title,
-        @NotBlank String message,
-        @NotBlank LocalDateTime creationDate,
-        @NotBlank String status,
-        @NotBlank String author,
-        @NotBlank String cursoName
+        Long id,
+        String title,
+        String message,
+        LocalDateTime creationDate,
+        String status,
+        String author,
+        String cursoName
 
 ) {
 }

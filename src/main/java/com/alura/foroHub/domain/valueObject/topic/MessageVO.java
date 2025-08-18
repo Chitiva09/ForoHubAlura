@@ -2,8 +2,6 @@ package com.alura.foroHub.domain.valueObject.topic;
 
 import java.util.Objects;
 
-import java.util.Objects;
-
 public final class MessageVO {
 
     private final String message;

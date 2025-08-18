@@ -91,20 +91,5 @@ public class Course {
         return id;
     }
 
-    public void setTopic(List<Topic> topic) {
-        this.topic = topic;
-    }
-
-    public void setCategory(CategoryVO category) {
-        this.category = category;
-    }
-
-    public void setNameCourse(NameCourseVO nameCourse) {
-        this.nameCourse = nameCourse;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
 }

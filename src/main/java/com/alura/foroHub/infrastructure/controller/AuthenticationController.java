@@ -24,7 +24,7 @@ public class AuthenticationController {
     private final AuthenticationManager authenticationManager;
     private final CreateUser createUser;
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE ,consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity login(@RequestBody @Valid AutenticationDataDto autenticationDataDto) {
         //el DTO es convertido en un DTO propio de spring security el cual después usa en la clase SecurityUserDetailService, este es transformado con el metodo UsernamePasswordAuthenticationToken, para que AuthenticationManager pueda usarlo
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(autenticationDataDto.userName(), autenticationDataDto.userPassword());
@@ -36,7 +36,7 @@ public class AuthenticationController {
     }
 
     @PostMapping(value = "/createUser", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity createUser (@RequestBody @Valid CreateUserDtoEntrance createUserDtoEntrance){
+    public ResponseEntity createUser(@RequestBody @Valid CreateUserDtoEntrance createUserDtoEntrance) {
 
         createUser.execute(createUserDtoEntrance);
 

@@ -1,6 +1,5 @@
 package com.alura.foroHub.infrastructure.security;
 
-import com.alura.foroHub.domain.model.UserModel;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
@@ -10,8 +9,6 @@ import org.springframework.beans.factory.annotation.Value;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-
-import static java.time.ZoneOffset.UTC;
 
 public class TokenService {
     //con esta línea obtengo el secret de properties y se lo inyecto a la variable secret
@@ -42,9 +39,7 @@ public class TokenService {
         try {
             var algorithm = Algorithm.HMAC256(secret);
             return JWT.require(algorithm)
-                    // specify any specific claim validations
                     .withIssuer("API ForoHub")
-                    // reusable verifier instance
                     .build()
                     .verify(tokenJWT)
                     .getSubject();
@@ -52,6 +47,5 @@ public class TokenService {
         } catch (JWTVerificationException exception) {
             throw new RuntimeException("Token JWT invalido o expirado");
         }
-//el error debe ser acá
     }
 }

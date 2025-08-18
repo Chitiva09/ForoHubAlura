@@ -25,7 +25,7 @@ public class TopicEntity {
     private String message;
     private LocalDateTime creationDate = LocalDateTime.now();
     private boolean status = true;
-    private String author ;
+    private String author;
 
     @ManyToOne
     @JoinColumn(name = "course_id")

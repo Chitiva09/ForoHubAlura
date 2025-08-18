@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 
-public interface CourseRepositoryJpa extends JpaRepository <CourseEntity, Long>{
+public interface CourseRepositoryJpa extends JpaRepository<CourseEntity, Long> {
 
-    Optional<CourseEntity> findByNameCourse (String nameCourse);
+    Optional<CourseEntity> findByNameCourse(String nameCourse);
 }

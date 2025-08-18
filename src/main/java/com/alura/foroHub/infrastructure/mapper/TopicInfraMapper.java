@@ -12,16 +12,12 @@ import com.alura.foroHub.infrastructure.entity.CourseEntity;
 import com.alura.foroHub.infrastructure.entity.TopicEntity;
 import org.springframework.data.domain.Page;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-import java.util.stream.Collectors;
-
 public class TopicInfraMapper {
 
     // De modelo de dominio a entidad de infraestructuraJPA
     public static TopicEntity toEntity(Topic topic, CourseEntity courseEntity) {
         return TopicEntity.builder()
+                .id(topic.getId())
                 .title(topic.getTitle().getTitle())
                 .message(topic.getMessage().getMessage())
                 .author(topic.getAuthor().getAuthor())

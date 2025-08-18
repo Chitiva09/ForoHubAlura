@@ -1,10 +1,8 @@
 package com.alura.foroHub.application.UseCase.topic;
 
-
 import com.alura.foroHub.application.dto.topic.NewTopicDtoEntrance;
-import com.alura.foroHub.application.dto.topic.TopicsByIdDtoExit;
-import com.alura.foroHub.application.exception.CourseByNameNotFoundException;
-import com.alura.foroHub.application.exception.TopicByIdNotFoundException;
+import com.alura.foroHub.application.exception.course.CourseByNameNotFoundException;
+import com.alura.foroHub.application.exception.topic.TopicByIdNotFoundException;
 import com.alura.foroHub.application.mapper.TopicAppMapper;
 import com.alura.foroHub.domain.model.Course;
 import com.alura.foroHub.domain.model.Topic;
@@ -14,8 +12,6 @@ import com.alura.foroHub.domain.useCases.topic.SearchTopicById;
 import com.alura.foroHub.domain.useCases.topic.UpdateTopic;
 import lombok.RequiredArgsConstructor;
 
-import java.util.Optional;
-
 @RequiredArgsConstructor
 public class UpdateTopicImpl implements UpdateTopic {
 
@@ -24,15 +20,15 @@ public class UpdateTopicImpl implements UpdateTopic {
     private final FindCourseByName findCourseByName;
 
     @Override
-    public void execute(Long idTopic) {
-        Optional<Topic> existingTopic = Optional.ofNullable(topicRepository.findById(idTopic)
-                .orElseThrow(() -> new TopicByIdNotFoundException(idTopic)));
-        Optional<Course> optionalCourse = findCourseByName.execute(existingTopic);
-        Course course = optionalCourse.orElseThrow(()-> new CourseByNameNotFoundException(topic.cursoName()));
-        Topic updateTopic = TopicAppMapper.toModel(newTopicDtoEntrance, course);
+    public void execute(Long idTopic, NewTopicDtoEntrance newTopicDtoEntrance) {
+        Topic existingTopic = topicRepository.findById(idTopic)
+                .orElseThrow(() -> new TopicByIdNotFoundException(idTopic));
 
-        // error aca estoy haciendo la actualizacion mal
-        topicRepository.save(updateTopic, course);
+        Course course = findCourseByName.execute(newTopicDtoEntrance.cursoName())
+                .orElseThrow(()-> new CourseByNameNotFoundException(newTopicDtoEntrance.cursoName()));
 
+        Topic updateTopic = TopicAppMapper.toUpdateModel(existingTopic, newTopicDtoEntrance, course);
+
+        topicRepository.save(updateTopic,course);
     }
 }

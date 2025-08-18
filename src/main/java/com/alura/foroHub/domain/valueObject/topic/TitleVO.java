@@ -8,6 +8,9 @@ public class TitleVO {
 
 
     public TitleVO(String title) {
+        if (title == null || title.trim().isEmpty()) {
+            throw new IllegalArgumentException("El titulo no puede estar vacío");
+        }
         this.title = title;
     }
 

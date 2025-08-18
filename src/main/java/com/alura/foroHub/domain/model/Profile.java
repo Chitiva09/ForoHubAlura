@@ -70,23 +70,11 @@ public class Profile {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public NameProfileVO getNameProfile() {
         return nameProfile;
     }
 
-    public void setNameProfile(NameProfileVO nameProfile) {
-        this.nameProfile = nameProfile;
-    }
-
     public List<UserModel> getUserEntities() {
         return userEntities;
-    }
-
-    public void setUserEntities(List<UserModel> userEntities) {
-        this.userEntities = userEntities;
     }
 }

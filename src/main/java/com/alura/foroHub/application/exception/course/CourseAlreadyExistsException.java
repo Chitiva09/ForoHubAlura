@@ -1,4 +1,4 @@
-package com.alura.foroHub.application.exception;
+package com.alura.foroHub.application.exception.course;
 
 public class CourseAlreadyExistsException extends RuntimeException {
     public CourseAlreadyExistsException(String nameCourse) {

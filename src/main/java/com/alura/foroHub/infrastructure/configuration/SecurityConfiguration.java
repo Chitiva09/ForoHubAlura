@@ -1,13 +1,7 @@
 package com.alura.foroHub.infrastructure.configuration;
 
-
-import com.alura.foroHub.domain.repository.UserRepository;
-import com.alura.foroHub.infrastructure.security.CustomUserDetails;
 import com.alura.foroHub.infrastructure.security.SecurityFilter;
 import com.alura.foroHub.infrastructure.security.SecurityUserDetailService;
-import com.alura.foroHub.infrastructure.security.TokenService;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +14,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -42,7 +35,9 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(req -> req
                         .requestMatchers("/login/createUser").permitAll()
                         .requestMatchers(HttpMethod.POST, "/login").permitAll()
-                    .anyRequest().authenticated()
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui.html", "/swagger-ui/**").permitAll()//esto es para el uso de SpringDocs
+                        .anyRequest()
+                        .authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)//esto le dice a spring que primero haga mi filtro y luego el de el
                 .build();
@@ -60,7 +55,7 @@ public class SecurityConfiguration {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
+
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();

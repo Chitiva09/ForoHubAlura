@@ -3,7 +3,7 @@ package com.alura.foroHub.application.UseCase.topic;
 
 import com.alura.foroHub.application.dto.topic.CreateTopicDtoExit;
 import com.alura.foroHub.application.dto.topic.NewTopicDtoEntrance;
-import com.alura.foroHub.application.exception.CourseByNameNotFoundException;
+import com.alura.foroHub.application.exception.course.CourseByNameNotFoundException;
 import com.alura.foroHub.application.mapper.TopicAppMapper;
 
 import com.alura.foroHub.domain.model.Course;

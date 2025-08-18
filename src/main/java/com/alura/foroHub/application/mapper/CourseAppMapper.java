@@ -16,7 +16,7 @@ public class CourseAppMapper {
                 .build();
     }
 
-    public static NewCourseDtoExit toDto (Course course){
+    public static NewCourseDtoExit toDto(Course course) {
 
         return new NewCourseDtoExit(
                 course.getId(),

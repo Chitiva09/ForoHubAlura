@@ -1,14 +1,14 @@
 package com.alura.foroHub.infrastructure.security;
 
-import com.alura.foroHub.application.exception.UserNotFoundException;
+import com.alura.foroHub.application.exception.user.UserNotFoundException;
 import com.alura.foroHub.domain.model.UserModel;
 import com.alura.foroHub.domain.useCases.user.FindUserByUserName;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-//AuthenticationManager llama esta clase la cual implementa UserDetailsService para hacer la busqueda del usuario en la base de datos
 
+//AuthenticationManager llama esta clase la cual implementa UserDetailsService para hacer la busqueda del usuario en la base de datos
 @RequiredArgsConstructor
 public class SecurityUserDetailService implements UserDetailsService {
     private final FindUserByUserName findUserByUserName;

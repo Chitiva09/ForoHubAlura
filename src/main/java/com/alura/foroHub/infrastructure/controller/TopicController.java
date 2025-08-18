@@ -6,6 +6,7 @@ import com.alura.foroHub.application.dto.topic.NewTopicDtoEntrance;
 import com.alura.foroHub.application.dto.topic.ShowAllTopicsDtoExit;
 import com.alura.foroHub.application.dto.topic.TopicsByIdDtoExit;
 import com.alura.foroHub.domain.useCases.topic.*;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -17,10 +18,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping("/topics")
+@SecurityRequirement(name = "bearer-key")
 @AllArgsConstructor
 public class TopicController {
 
@@ -30,7 +31,7 @@ public class TopicController {
     private final UpdateTopic updateTopic;
     private final DeleteTopicById deleteTopic;
 
-    //funcioan ok
+    //funciona ok
     @PostMapping
     public ResponseEntity<CreateTopicDtoExit> registrationNewTopic(@RequestBody @Valid NewTopicDtoEntrance newTopicDtoEntrance, UriComponentsBuilder uriBuilder) {
         CreateTopicDtoExit savedTopic = registrationNewTopicUseCase.execute(newTopicDtoEntrance);
@@ -40,14 +41,16 @@ public class TopicController {
                 .toUri();
         return ResponseEntity.created(location).body(savedTopic);
     }
+
     //funciona ok
     @GetMapping
-    public ResponseEntity<Page<ShowAllTopicsDtoExit>> showAllTopics(@PageableDefault(size=5 , sort = {"creationDate"}) Pageable pageable) {
+    public ResponseEntity<Page<ShowAllTopicsDtoExit>> showAllTopics(@PageableDefault(size = 5, sort = {"creationDate"}) Pageable pageable) {
 
-        Page<ShowAllTopicsDtoExit> topicsDtoExits = ( showAllTopics.execute(pageable));
+        Page<ShowAllTopicsDtoExit> topicsDtoExits = (showAllTopics.execute(pageable));
 
         return ResponseEntity.ok(topicsDtoExits);
     }
+
     //funciona ok
     @GetMapping(value = "/{id}")
     public ResponseEntity<TopicsByIdDtoExit> searchTopicsById(@PathVariable Long id) {
@@ -57,7 +60,7 @@ public class TopicController {
         return ResponseEntity.ok(topicByIdDtoExit);
     }
 
-
+    //funciona ok
     @PutMapping(value = "/{id}")
     public ResponseEntity<?> updateTopic(@PathVariable Long id, @RequestBody @Valid NewTopicDtoEntrance newTopicDtoEntrance) {
         updateTopic.execute(id, newTopicDtoEntrance);
@@ -65,6 +68,7 @@ public class TopicController {
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 
+    //funciona ok
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTopicById(@PathVariable Long id) {
 

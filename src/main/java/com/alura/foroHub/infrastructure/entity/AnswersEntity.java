@@ -22,7 +22,7 @@ public class AnswersEntity {
     private LocalDateTime creationDate;
     private String author;
     private String solution;
-    
+
     @ManyToOne
     @JoinColumn(name = "topic_id")
     private TopicEntity topicEntity;

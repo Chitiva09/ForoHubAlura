@@ -5,6 +5,6 @@ import com.alura.foroHub.application.dto.topic.NewTopicDtoEntrance;
 
 public interface RegistrationNewTopic {
 
-    CreateTopicDtoExit execute (NewTopicDtoEntrance newTopicDtoEntrance);
+    CreateTopicDtoExit execute(NewTopicDtoEntrance newTopicDtoEntrance);
 
 }

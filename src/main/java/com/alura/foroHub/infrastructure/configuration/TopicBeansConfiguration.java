@@ -39,13 +39,14 @@ public class TopicBeansConfiguration {
 
     @Bean
     public UpdateTopic updateTopic(TopicRepository topicRepository, SearchTopicById searchTopicById, FindCourseByName findCourseByName) {
-        return new UpdateTopicImpl(searchTopicById, topicRepository, findCourseByName );
+        return new UpdateTopicImpl(searchTopicById, topicRepository, findCourseByName);
     }
 
     @Bean
-    public DeleteTopicById deleteTopicById (TopicRepository topicRepository, SearchTopicById searchTopicById){
+    public DeleteTopicById deleteTopicById(TopicRepository topicRepository, SearchTopicById searchTopicById) {
         return new DeleteTopicByIdImpl(searchTopicById, topicRepository);
     }
+
     @Bean
     public TopicAppMapper topicAppMapper() {
         return new TopicAppMapper();

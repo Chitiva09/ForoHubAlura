@@ -5,5 +5,5 @@ import com.alura.foroHub.application.dto.course.NewCourseDtoExit;
 
 public interface RegistrationNewCourse {
 
-    NewCourseDtoExit execute (NewCourseDtoEntrance newCourseDtoEntrance);
+    NewCourseDtoExit execute(NewCourseDtoEntrance newCourseDtoEntrance);
 }

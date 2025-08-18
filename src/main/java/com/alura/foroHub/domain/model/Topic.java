@@ -21,7 +21,8 @@ public class Topic {
     private List<Answer> answers;
     private UserModel userModel;
 
-    public Topic(){}
+    public Topic() {
+    }
 
     // Constructor privado para el Builder
     private Topic(TopicBuilder builder) {
@@ -34,6 +35,19 @@ public class Topic {
         this.course = builder.course;
         this.answers = builder.answers;
         this.userModel = builder.userModel;
+    }
+
+    public TopicBuilder toBuilder() {
+        return new TopicBuilder()
+                .withId(this.id)
+                .withTitle(this.title)
+                .withMessage(this.message)
+                .withCreationDate(this.creationDate)
+                .withStatus(this.status)
+                .withAuthor(this.author)
+                .withCourse(this.course)
+                .withAnswers(this.answers)
+                .userModel(this.userModel);
     }
 
     public Topic(TitleVO title, MessageVO message, CreationDateVO creationDateVO, Course course) {
@@ -127,27 +141,35 @@ public class Topic {
     public Long getId() {
         return id;
     }
+
     public TitleVO getTitle() {
         return title;
     }
+
     public MessageVO getMessage() {
         return message;
     }
+
     public CreationDateVO getCreationDate() {
         return creationDate;
     }
+
     public boolean isStatus() {
         return status;
     }
+
     public AuthorVO getAuthor() {
         return author;
     }
+
     public Course getCourse() {
         return course;
     }
+
     public List<Answer> getAnswers() {
         return answers;
     }
+
     public UserModel getUserModel() {
         return userModel;
     }

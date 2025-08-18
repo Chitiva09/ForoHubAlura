@@ -1,4 +1,4 @@
-package com.alura.foroHub.application.exception;
+package com.alura.foroHub.application.exception.course;
 
 public class CourseNotFoundException extends RuntimeException {
     public CourseNotFoundException() {

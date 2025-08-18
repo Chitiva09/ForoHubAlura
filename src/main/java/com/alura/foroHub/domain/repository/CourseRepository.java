@@ -6,8 +6,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CourseRepository {
-    List<Course> findAll ();
+    List<Course> findAll();
+
     Optional<Course> findByNameCourse(String nameCourse);
-    Course save (Course course);
+
+    Course save(Course course);
 
 }

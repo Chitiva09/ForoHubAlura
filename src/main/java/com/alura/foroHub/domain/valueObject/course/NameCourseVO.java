@@ -1,9 +1,6 @@
 package com.alura.foroHub.domain.valueObject.course;
 
 
-
-import com.alura.foroHub.domain.model.Course;
-
 import java.util.Objects;
 
 

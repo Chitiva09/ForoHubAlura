@@ -8,7 +8,7 @@ import com.alura.foroHub.domain.valueObject.userModelVO.UserPasswordVO;
 
 public class UserAppMapper {
 
-    public static UserModel toDomain (CreateUserDtoEntrance dto, String hashedPassword){
+    public static UserModel toDomain(CreateUserDtoEntrance dto, String hashedPassword) {
 
         return new UserModel().builder()
                 .withUserName(new UserNameVO(dto.userName()))

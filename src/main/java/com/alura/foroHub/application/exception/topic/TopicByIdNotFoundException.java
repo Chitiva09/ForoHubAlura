@@ -1,4 +1,4 @@
-package com.alura.foroHub.application.exception;
+package com.alura.foroHub.application.exception.topic;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

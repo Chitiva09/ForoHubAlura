@@ -13,11 +13,12 @@ public class UserModel {
     private UserNameVO userName;
     private EmailVO email;
     private UserPasswordVO userPassword;
-    private List<Profile> profile;  
+    private List<Profile> profile;
     private List<Topic> topic;
 
-    public UserModel(){}
-    
+    public UserModel() {
+    }
+
     public UserModel(Long id, UserNameVO userName, EmailVO email, UserPasswordVO userPassword, List<Profile> profile, List<Topic> topic) {
         this.id = id;
         this.userName = userName;
@@ -106,47 +107,23 @@ public class UserModel {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public UserNameVO getUserName() {
         return userName;
-    }
-
-    public void setUserName(UserNameVO userName) {
-        this.userName = userName;
     }
 
     public EmailVO getEmail() {
         return email;
     }
 
-    public void setEmail(EmailVO email) {
-        this.email = email;
-    }
-
     public UserPasswordVO getUserPassword() {
         return userPassword;
-    }
-
-    public void setUserPassword(UserPasswordVO userPassword) {
-        this.userPassword = userPassword;
     }
 
     public List<Profile> getProfile() {
         return profile;
     }
 
-    public void setProfile(List<Profile> profile) {
-        this.profile = profile;
-    }
-
     public List<Topic> getTopic() {
         return topic;
-    }
-
-    public void setTopic(List<Topic> topic) {
-        this.topic = topic;
     }
 }

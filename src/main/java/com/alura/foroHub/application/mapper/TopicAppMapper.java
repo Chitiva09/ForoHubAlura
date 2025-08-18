@@ -7,8 +7,6 @@ import com.alura.foroHub.application.dto.topic.ShowAllTopicsDtoExit;
 import com.alura.foroHub.application.dto.topic.TopicsByIdDtoExit;
 import com.alura.foroHub.domain.model.Course;
 import com.alura.foroHub.domain.model.Topic;
-import com.alura.foroHub.domain.valueObject.course.CategoryVO;
-import com.alura.foroHub.domain.valueObject.course.NameCourseVO;
 import com.alura.foroHub.domain.valueObject.topic.AuthorVO;
 import com.alura.foroHub.domain.valueObject.topic.CreationDateVO;
 import com.alura.foroHub.domain.valueObject.topic.MessageVO;
@@ -25,6 +23,15 @@ public class TopicAppMapper {
                 .withMessage(new MessageVO(newTopicDtoEntrance.message()))
                 .withAuthor(new AuthorVO(newTopicDtoEntrance.author()))
                 .withCreationDate(CreationDateVO.now())
+                .withCourse(course)
+                .build();
+    }
+
+    public static Topic toUpdateModel(Topic existingTopic, NewTopicDtoEntrance dtoEntrance, Course course) {
+        return existingTopic.toBuilder()
+                .withTitle(new TitleVO(dtoEntrance.title()))
+                .withMessage(new MessageVO(dtoEntrance.message()))
+                .withAuthor(new AuthorVO(dtoEntrance.author()))
                 .withCourse(course)
                 .build();
     }
@@ -54,7 +61,7 @@ public class TopicAppMapper {
         );
     }
 
-    public static CreateTopicDtoExit toCreateTopicDtoExit(Topic topic){
+    public static CreateTopicDtoExit toCreateTopicDtoExit(Topic topic) {
 
         return new CreateTopicDtoExit(
                 topic.getTitle().getTitle(),

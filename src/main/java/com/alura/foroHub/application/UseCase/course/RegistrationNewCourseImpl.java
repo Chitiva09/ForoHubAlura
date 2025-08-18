@@ -2,10 +2,9 @@ package com.alura.foroHub.application.UseCase.course;
 
 import com.alura.foroHub.application.dto.course.NewCourseDtoEntrance;
 import com.alura.foroHub.application.dto.course.NewCourseDtoExit;
-import com.alura.foroHub.application.exception.CourseAlreadyExistsException;
+import com.alura.foroHub.application.exception.course.CourseAlreadyExistsException;
 import com.alura.foroHub.application.mapper.CourseAppMapper;
 import com.alura.foroHub.domain.model.Course;
-import com.alura.foroHub.domain.model.Topic;
 import com.alura.foroHub.domain.repository.CourseRepository;
 import com.alura.foroHub.domain.useCases.course.FindCourseByName;
 import com.alura.foroHub.domain.useCases.course.RegistrationNewCourse;

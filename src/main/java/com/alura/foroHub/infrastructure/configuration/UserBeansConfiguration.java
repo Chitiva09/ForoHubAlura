@@ -29,22 +29,22 @@ public class UserBeansConfiguration {
     }
 
     @Bean
-    public SecurityFilter securityFilter (UserRepository userRepository, TokenService tokenService){
-        return new SecurityFilter( userRepository, tokenService);
+    public SecurityFilter securityFilter(UserRepository userRepository, TokenService tokenService) {
+        return new SecurityFilter(userRepository, tokenService);
     }
 
     @Bean
-    public TokenService tokenService (){
+    public TokenService tokenService() {
         return new TokenService();
     }
 
     @Bean
-    public SecurityUserDetailService securityUserDetailService (FindUserByUserName findUserByUserName){
+    public SecurityUserDetailService securityUserDetailService(FindUserByUserName findUserByUserName) {
         return new SecurityUserDetailService(findUserByUserName);
     }
 
     @Bean
-    public CreateUser createUser (PasswordEncoder passwordEncoder, UserRepository userRepository){
+    public CreateUser createUser(PasswordEncoder passwordEncoder, UserRepository userRepository) {
         return new CreateUserImpl(passwordEncoder, userRepository);
     }
 }

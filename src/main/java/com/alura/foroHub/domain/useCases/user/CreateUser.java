@@ -4,5 +4,5 @@ import com.alura.foroHub.application.dto.authentication.CreateUserDtoEntrance;
 
 public interface CreateUser {
 
-    void execute (CreateUserDtoEntrance createUserDtoEntrance);
+    void execute(CreateUserDtoEntrance createUserDtoEntrance);
 }

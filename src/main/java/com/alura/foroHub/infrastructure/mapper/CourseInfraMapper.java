@@ -2,14 +2,13 @@ package com.alura.foroHub.infrastructure.mapper;
 
 
 import com.alura.foroHub.domain.model.Course;
-import com.alura.foroHub.domain.model.Topic;
 import com.alura.foroHub.domain.valueObject.course.CategoryVO;
 import com.alura.foroHub.domain.valueObject.course.NameCourseVO;
 import com.alura.foroHub.infrastructure.entity.CourseEntity;
 
 
 public class CourseInfraMapper {
-    public static Course toDomain (CourseEntity courseEntity){
+    public static Course toDomain(CourseEntity courseEntity) {
         return new Course(
                 courseEntity.getId(),
                 new NameCourseVO(courseEntity.getNameCourse()),
@@ -17,7 +16,7 @@ public class CourseInfraMapper {
     }
 
 
-    public static CourseEntity toEntity (Course course){
+    public static CourseEntity toEntity(Course course) {
         return CourseEntity.builder()
                 .id(course.getId())
                 .nameCourse(course.getNameCourse().getNameCourse())

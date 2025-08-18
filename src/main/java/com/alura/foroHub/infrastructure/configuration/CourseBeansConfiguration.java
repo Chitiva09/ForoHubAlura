@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Configuration;
 public class CourseBeansConfiguration {
 
     @Bean
-    public CourseRepository courseRepository (CourseRepositoryJpa jpa){
+    public CourseRepository courseRepository(CourseRepositoryJpa jpa) {
 
         return new CourseRepositoryJpaAdapter(jpa);
     }
@@ -32,19 +32,20 @@ public class CourseBeansConfiguration {
     public CourseAppMapper courseAppMapper() {
         return new CourseAppMapper();
     }
+
     @Bean
-    public FindCourseByName findCourseByName (CourseRepository courseRepository){
+    public FindCourseByName findCourseByName(CourseRepository courseRepository) {
 
         return new FindCourseByNameImpl(courseRepository);
     }
 
     @Bean
-    public RegistrationNewCourse registrationNewCourse (FindCourseByName findCourseByName, CourseRepository courseRepository){
+    public RegistrationNewCourse registrationNewCourse(FindCourseByName findCourseByName, CourseRepository courseRepository) {
         return new RegistrationNewCourseImpl(findCourseByName, courseRepository);
     }
 
     @Bean
-    public ShowAllCourses showAllCourses (CourseRepository courseRepository){
+    public ShowAllCourses showAllCourses(CourseRepository courseRepository) {
         return new ShowAllCoursesImpl(courseRepository);
     }
 }

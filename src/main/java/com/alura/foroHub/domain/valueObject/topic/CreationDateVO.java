@@ -15,7 +15,8 @@ public final class CreationDateVO {
         }
         this.creationDate = creationDate;
     }
-    public static CreationDateVO now(){
+
+    public static CreationDateVO now() {
         return new CreationDateVO(LocalDateTime.now());
     }
 

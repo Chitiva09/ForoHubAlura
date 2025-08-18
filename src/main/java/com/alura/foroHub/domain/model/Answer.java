@@ -6,7 +6,6 @@ import com.alura.foroHub.domain.valueObject.answer.MessageAnswerVO;
 import com.alura.foroHub.domain.valueObject.answer.SolutionVO;
 
 
-
 public class Answer {
 
     private Long id;
@@ -17,8 +16,9 @@ public class Answer {
     private SolutionVO solution;
     private UserModel userModel;
 
-    public Answer(){}
-    
+    public Answer() {
+    }
+
     public Answer(Long id, MessageAnswerVO messageAnswer, Topic topic, CreationDateAnswerVO creationDate, AuthorAnswerVO authorAnswer, SolutionVO solution, UserModel userModel) {
         this.id = id;
         this.messageAnswer = messageAnswer;
@@ -75,7 +75,7 @@ public class Answer {
             return this;
         }
 
-        public AnswerBuilder withAuthorAnswer(AuthorAnswerVO  authorAnswer) {
+        public AnswerBuilder withAuthorAnswer(AuthorAnswerVO authorAnswer) {
             this.authorAnswer = authorAnswer;
             return this;
         }
@@ -99,48 +99,24 @@ public class Answer {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public MessageAnswerVO getMessageAnswer() {
         return messageAnswer;
-    }
-
-    public void setMessageAnswer(MessageAnswerVO messageAnswer) {
-        this.messageAnswer = messageAnswer;
     }
 
     public Topic getTopic() {
         return topic;
     }
 
-    public void setTopic(Topic topic) {
-        this.topic = topic;
-    }
-
     public CreationDateAnswerVO getCreationDate() {
         return creationDate;
-    }
-
-    public void setCreationDate(CreationDateAnswerVO creationDate) {
-        this.creationDate = creationDate;
     }
 
     public AuthorAnswerVO getAuthorAnswer() {
         return authorAnswer;
     }
 
-    public void setAuthorAnswer(AuthorAnswerVO  author) {
-        this.authorAnswer = author;
-    }
-
     public SolutionVO getSolution() {
         return solution;
-    }
-
-    public void setSolution(SolutionVO solution) {
-        this.solution = solution;
     }
 
     public UserModel getUserModel() {
